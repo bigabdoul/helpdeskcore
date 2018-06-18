@@ -54,8 +54,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\CoreTools\CoreTools.csproj" />
     <ProjectReference Include="..\..\efcore-repository\CoreRepository.csproj" />
-    <ProjectReference Include="..\..\MailkitTools\Mailkit-Tools.DependencyInjection\MailkitTools.DependencyInjection.csproj" />
-    <ProjectReference Include="..\..\MailkitTools\MailkitTools.csproj" />
+    <ProjectReference Include="..\..\mailkit-tools\Mailkit-Tools.DependencyInjection\MailkitTools.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\mailkit-tools\MailkitTools.csproj" />
     <ProjectReference Include="..\HelpDeskCore.Data\HelpDeskCore.Data.csproj" />
     <ProjectReference Include="..\HelpDeskCore.Resources\HelpDeskCore.Resources.csproj" />
   </ItemGroup>

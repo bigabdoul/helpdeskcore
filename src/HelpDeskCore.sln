@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDeskCore", "HelpDeskCore.csproj", "{27E2D292-D66B-47A1-AFF0-5DBADD669799}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTools", "..\..\CoreTools\CoreTools.csproj", "{7A981714-ED1E-4F2E-92D4-6BD9719FF593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTools", "..\..\coretools\CoreTools.csproj", "{7A981714-ED1E-4F2E-92D4-6BD9719FF593}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreRepository", "..\..\efcore-repository\CoreRepository.csproj", "{20A57F5A-9780-49B4-A43E-413383B709B8}"
 EndProject
@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDeskCore.Resources", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDeskCore.Shared", "..\HelpDeskCore.Shared\HelpDeskCore.Shared.csproj", "{75CA48D8-1213-4EB5-BA47-6733222D3660}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools", "..\..\MailkitTools\MailkitTools.csproj", "{5799B002-9208-4A9B-8C73-50FA18048718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools", "..\..\mailkit-tools\MailkitTools.csproj", "{5799B002-9208-4A9B-8C73-50FA18048718}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools.DependencyInjection", "..\..\MailkitTools\Mailkit-Tools.DependencyInjection\MailkitTools.DependencyInjection.csproj", "{BB594B65-D068-4F1A-8D0A-09920E273E7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools.DependencyInjection", "..\..\mailkit-tools\Mailkit-Tools.DependencyInjection\MailkitTools.DependencyInjection.csproj", "{BB594B65-D068-4F1A-8D0A-09920E273E7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
