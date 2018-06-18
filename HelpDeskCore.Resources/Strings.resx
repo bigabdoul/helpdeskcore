@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BadLoginAttempt" xml:space="preserve">
+    <value>Nom d'utilisateur et/ou mot de passe incorrect ou compte désactivé.</value>
+  </data>
+  <data name="CannotCommentIssue" xml:space="preserve">
+    <value>Vous ne pouvez pas commenter ce ticket.</value>
+  </data>
+  <data name="ExternalAuthInvalidFacebookToken" xml:space="preserve">
+    <value>Token Facebook invalide.</value>
+  </data>
+  <data name="ExternalAuthLocalAccountCreationFailed" xml:space="preserve">
+    <value>Failed to create local user account.</value>
+  </data>
+  <data name="SmtpHostUnreachable" xml:space="preserve">
+    <value>Hôte '{0}' inconnu ou injoignable. Vérifiez que votre machine est bien connectée au réseau (local et/ou internet).</value>
+  </data>
+  <data name="SmtpServerDoesNotSupportSsl" xml:space="preserve">
+    <value>Le serveur SMTP ne supporte pas les connexions via SSL/TLS.</value>
+  </data>
+  <data name="SmtpServerRequiresAuth" xml:space="preserve">
+    <value>Le serveur SMTP exige l'authentification</value>
+  </data>
+  <data name="SysEventCategoryCreated" xml:space="preserve">
+    <value>Catégorie '{0}' créée.</value>
+  </data>
+  <data name="SysEventCategoryDeleted" xml:space="preserve">
+    <value>Catégorie '{0}' supprimée.</value>
+  </data>
+  <data name="SysEventCategoryUpdated" xml:space="preserve">
+    <value>Catégorie '{0}' mise à jour.</value>
+  </data>
+  <data name="SysEventEmailConfigUpdated" xml:space="preserve">
+    <value>Paramètres de la messagerie mis à jour.</value>
+  </data>
+  <data name="SysEventEmailSendFailed" xml:space="preserve">
+    <value>Impossible d'envoyer un e-mail.</value>
+  </data>
+  <data name="SysEventEmailSendSuccess" xml:space="preserve">
+    <value>E-mail envoyé avec succès.</value>
+  </data>
+  <data name="SysEventIssueAssigned" xml:space="preserve">
+    <value>Ticket #{0} assigné à {1}.</value>
+  </data>
+  <data name="SysEventIssueClosed" xml:space="preserve">
+    <value>Ticket #{0} fermé par {1}.</value>
+  </data>
+  <data name="SysEventIssueCreated" xml:space="preserve">
+    <value>{0} vient de soumettre un ticket.</value>
+  </data>
+  <data name="SysEventIssueDeleted" xml:space="preserve">
+    <value>Ticket #{0} supprimé par {1}.</value>
+  </data>
+  <data name="SysEventIssueReopened" xml:space="preserve">
+    <value>Ticket #{0} rouvert par {1}.</value>
+  </data>
+  <data name="SysEventIssueUpdated" xml:space="preserve">
+    <value>Ticket #{0} mis à jour par {1}.</value>
+  </data>
+  <data name="SysEventLoginFailure" xml:space="preserve">
+    <value>Tentative de connexion au compte '{0}' échouée.</value>
+  </data>
+  <data name="SysEventLoginSuccess" xml:space="preserve">
+    <value>{0} vient de se connecter.</value>
+  </data>
+  <data name="SysEventLogout" xml:space="preserve">
+    <value>{0} vient de se déconnecter.</value>
+  </data>
+  <data name="SysEventUserCreated" xml:space="preserve">
+    <value>Le compte {0} a été créé avec succès.</value>
+  </data>
+  <data name="SysEventUserDeleted" xml:space="preserve">
+    <value>Le compte '{0}' a été supprimé.</value>
+  </data>
+  <data name="SysEventUserImported" xml:space="preserve">
+    <value>Utilisateur '{0}' importé.</value>
+  </data>
+  <data name="SysEventUserRegistered" xml:space="preserve">
+    <value>{0} vient de s'enregistrer.</value>
+  </data>
+  <data name="SysEventUserUpdated" xml:space="preserve">
+    <value>Détails de '{0}' mis à jour.</value>
+  </data>
+  <data name="TicketCreated" xml:space="preserve">
+    <value>Nouveau ticket créé</value>
+  </data>
+  <data name="TicketNotUpdated" xml:space="preserve">
+    <value>Ticket non mis à jour</value>
+  </data>
+  <data name="TicketSortingCompany" xml:space="preserve">
+    <value>Entreprise</value>
+  </data>
+  <data name="TicketSortingDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="TicketSortingDeadline" xml:space="preserve">
+    <value>Date butoire</value>
+  </data>
+  <data name="TicketSortingFrom" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="TicketSortingId" xml:space="preserve">
+    <value>Numéro de ticket</value>
+  </data>
+  <data name="TicketSortingLastModified" xml:space="preserve">
+    <value>Dernière modification</value>
+  </data>
+  <data name="TicketSortingPriority" xml:space="preserve">
+    <value>Priorité</value>
+  </data>
+  <data name="TicketSortingStatus" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="TicketSortingSubject" xml:space="preserve">
+    <value>Objet</value>
+  </data>
+  <data name="TicketSortingTech" xml:space="preserve">
+    <value>Tech</value>
+  </data>
+  <data name="TicketUpdated" xml:space="preserve">
+    <value>Le ticket a été mis à jour</value>
+  </data>
+  <data name="WelcomeOnHelpDesk" xml:space="preserve">
+    <value>Bienvenue sur Help Desk</value>
+  </data>
+</root>
