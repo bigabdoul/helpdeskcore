@@ -56,8 +56,6 @@
     <ProjectReference Include="..\..\efcore-repository\CoreRepository.csproj" />
     <ProjectReference Include="..\HelpDeskCore.Data\HelpDeskCore.Data.csproj" />
     <ProjectReference Include="..\HelpDeskCore.Resources\HelpDeskCore.Resources.csproj" />
-    <ProjectReference Include="..\..\MailkitTools\MailkitTools.DependencyInjection\MailkitTools.DependencyInjection.csproj" />
-    <ProjectReference Include="..\..\MailkitTools\MailkitTools.csproj" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\shared\components\base-view.ts" />

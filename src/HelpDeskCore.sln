@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDeskCore.Resources", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpDeskCore.Shared", "..\HelpDeskCore.Shared\HelpDeskCore.Shared.csproj", "{75CA48D8-1213-4EB5-BA47-6733222D3660}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools", "..\..\MailkitTools\MailkitTools.csproj", "{E943113F-6042-4AD8-9C01-3683891AA6C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools", "..\..\MailkitTools\MailkitTools.csproj", "{5799B002-9208-4A9B-8C73-50FA18048718}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools.DependencyInjection", "..\..\MailkitTools\MailkitTools.DependencyInjection\MailkitTools.DependencyInjection.csproj", "{4BCE1264-22FE-4412-A9DF-5FC3B1E20DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailkitTools.DependencyInjection", "..\..\MailkitTools\Mailkit-Tools.DependencyInjection\MailkitTools.DependencyInjection.csproj", "{BB594B65-D068-4F1A-8D0A-09920E273E7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,14 +49,14 @@ Global
 		{75CA48D8-1213-4EB5-BA47-6733222D3660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75CA48D8-1213-4EB5-BA47-6733222D3660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75CA48D8-1213-4EB5-BA47-6733222D3660}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E943113F-6042-4AD8-9C01-3683891AA6C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E943113F-6042-4AD8-9C01-3683891AA6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E943113F-6042-4AD8-9C01-3683891AA6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E943113F-6042-4AD8-9C01-3683891AA6C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BCE1264-22FE-4412-A9DF-5FC3B1E20DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BCE1264-22FE-4412-A9DF-5FC3B1E20DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BCE1264-22FE-4412-A9DF-5FC3B1E20DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BCE1264-22FE-4412-A9DF-5FC3B1E20DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5799B002-9208-4A9B-8C73-50FA18048718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5799B002-9208-4A9B-8C73-50FA18048718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5799B002-9208-4A9B-8C73-50FA18048718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5799B002-9208-4A9B-8C73-50FA18048718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB594B65-D068-4F1A-8D0A-09920E273E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB594B65-D068-4F1A-8D0A-09920E273E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB594B65-D068-4F1A-8D0A-09920E273E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB594B65-D068-4F1A-8D0A-09920E273E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
