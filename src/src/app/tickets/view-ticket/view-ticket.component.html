@@ -1,0 +1,120 @@
+<div class="form-group"><app-toolbar></app-toolbar></div>
+<div class="row" *ngIf="model">
+  <div class="col-md-8">
+    <div class="shadowed-box ticket-status-{{model.statusId}}">
+      <div>
+        <button class="btn btn-sm" title="Répondre" (click)="commentShown=true"><i class="fa fa-share icon"></i> Répondre</button>
+        <button class="btn btn-sm btn-primary" (click)="takeOver()" *ngIf="model.canTakeOver" title="Se charger de la résolution de ce problème">Je m'en charge</button>
+        <button *ngIf="canSetStatus()" class="btn btn-sm btn-info" title="Changez le statut du ticket si le problème a été résolu ou persiste." (click)="toggleStatus()">
+          <i class="fa fa-check"></i> {{closeOpenText}}
+        </button>
+        <a href="#" routerLink="/tickets/edit/{{model.id}}" role="button" class="btn btn-sm btn-info"><i class="fa fa-edit icon"></i></a>
+      </div>
+
+      <h2 class="ticket-subject">{{model.subject}}</h2>
+      <div class="ticket-body">
+        {{model.body}}
+      </div>
+      <input id="txtNewComment" placeholder="Répondre" title="Ajouter une nouvelle réponse" (focus)="commentShown=true" *ngIf="!commentShown&&canComment()" class="form-control"/>
+    </div>
+
+    <form class="shadowed-box fade-inout" #f="ngForm" (ngSubmit)="submitComment(f)" *ngIf="commentShown" novalidate>
+      <div class="form-group">
+        <label for="recipients">Destinataires</label>
+        <input class="form-control" id="recipients" placeholder="Liste d'adresses e-mail à mettre en copie" name="recipients" value="{{model.from}}" ngModel>
+        <span class="grey2">Utilisez un point-virgule ou une virgule pour séparer les adresses e-mail.</span>
+      </div>
+      <div class="form-group">
+        <label for="body">Réponse au ticket</label>
+        <textarea class="form-control" placeholder="Votre réponse au ticket" id="body" name="body" rows="5" required ngModel tmFocus></textarea>
+      </div>
+      <div class="form-group">
+        <div class="onoff">
+          <input type="hidden" name="forTechsOnly" value="false" />
+          <input class="onoff-checkbox" type="checkbox" value="true" id="forTechsOnly" name="forTechsOnly" ngModel />
+          <label class="onoff-label" for="forTechsOnly"></label>
+        </div>
+        <label for="forTechsOnly">Pour les techniciens seulement</label>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-primary" [disabled]="f.invalid || isRequesting"><i class="fa fa-share icon"></i> Répondre</button>
+        <button class="btn btn-sm" (click)="commentShown=false">Annuler</button>
+        <app-spinner [isRunning]="isRequesting"></app-spinner>
+      </div>
+
+      <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+    </form>
+    
+    <div class="comments">
+      <div class="comment" *ngFor="let comment of model.comments">
+        <div class="card{{comment.system?' grey sys':''}}">
+          <div class="card-header">
+            <div class="author-avatar">
+              <img class="avatar" src="{{comment.authorPicture}}" onerror="this.src = '/assets/guestavatar.png' " alt="avatar">
+              <img src="/assets/wrench.png" class="wrench" *ngIf="comment.authorIsTech">
+            </div>
+            <p class="comment-author">
+              <span *ngIf="comment.author">{{comment.author}}</span>
+              <span *ngIf="comment.authorEmail && admin()">&lt;{{comment.authorEmail}}&gt;</span>
+            </p>
+            <p class="date">{{comment.date}}</p>
+          </div>
+          <div class="card-body">
+            {{comment.body}}
+          </div>
+        </div>
+        <span class="date">{{comment.since}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card ticket-summary shadowed-box" style="padding:0;">
+      <div class="card-header"><h3>Détails</h3></div>
+      <div class="card-body">
+        <table class="table table-sm">
+          <tr>
+            <td><h2>#{{model.id}}</h2></td>
+            <td><h2>{{model.status}}</h2></td>
+          </tr>
+          <tr>
+            <td>Priorité :</td>
+            <td>{{model.priority}}</td>
+          </tr>
+          <tr>
+            <td>Catégorie :</td>
+            <td>{{model.category}}</td>
+          </tr>
+          <tr>
+            <td>De :</td>
+            <td>{{model.from}}</td>
+          </tr>
+          <tr>
+            <td>Assigné à :</td>
+            <td>{{model.assignee}}</td>
+          </tr>
+          <tr>
+            <td>Date :</td>
+            <td title="{{model.issuedSince}}">{{model.issueDate}}</td>
+          </tr>
+          <tr>
+            <td>Délai :</td>
+            <td title="{{model.dueSince}}">{{model.dueOn}}</td>
+          </tr>
+          <tr>
+            <td>Temps de traitement :</td>
+            <td>{{model.timeSpent}}</td>
+          </tr>
+          <tr>
+            <td>Démarré :</td>
+            <td title="{{model.startedSince}}">{{model.startedOn}}</td>
+          </tr>
+          <tr>
+            <td>Résolu :</td>
+            <td title="{{model.resolvedSince}}">{{model.resolvedOn}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

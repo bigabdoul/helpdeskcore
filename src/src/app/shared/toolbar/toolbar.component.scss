@@ -1,0 +1,159 @@
+#messagetoolbar {
+  left: 0;
+  height: 40px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.toolbar a.button.checkmail {
+  background-position: center -1176px;
+}
+
+.toolbar a.button {
+  text-align: center;
+  font-size: 10px;
+  color: #555;
+  min-width: 50px;
+  max-width: 75px;
+  height: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 28px 2px 0 2px;
+  text-shadow: 0px 1px 1px #eee;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  background: url(/assets/buttons.png) -100px 0 no-repeat transparent;
+  border: 0;
+}
+
+a.button {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 2px 5px;
+  color: #525252;
+  text-shadow: 0px 1px 1px #fff;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+  background: #f7f7f7;
+  background: -moz-linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#e6e6e6));
+  background: -o-linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  background: -ms-linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  background: linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  -o-box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  -moz-box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0186ba;
+}
+
+.toolbar a.button.compose {
+  background-position: center -530px;
+}
+
+.toolbar .spacer {
+  display: inline-block;
+  width: 24px;
+  height: 40px;
+  padding: 0;
+}
+
+.toolbar a.button.reply {
+  background-position: center -570px;
+}
+
+.dropbutton {
+  display: inline-block;
+  position: relative;
+}
+
+.toolbar a.button.reply-all {
+  min-width: 64px;
+  background-position: left -610px;
+}
+
+.dropbutton a.button {
+  margin-left: 0;
+  padding-left: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.dropbutton .dropbuttontip {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 42px;
+  width: 18px;
+  background: url(/assets/buttons.png) 0 -1255px no-repeat;
+  cursor: pointer;
+}
+
+.toolbar a.button.forward {
+  min-width: 64px;
+  background-position: left -650px;
+}
+
+.toolbar a.button.delete {
+  background-position: center -690px;
+}
+
+.toolbar a.button.markmessage {
+  background-position: center -1094px;
+}
+
+.toolbar a.button.more {
+  background-position: center -850px;
+}
+
+.popupmenu, #rcmKSearchpane {
+  display: none;
+  position: absolute;
+  top: 32px;
+  left: 90px;
+  width: auto;
+  background: #444;
+  border: 1px solid #999;
+  z-index: 240;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 0 #333;
+  -moz-box-shadow: 0 2px 6px 0 #333;
+  -webkit-box-shadow: 0 2px 6px 0 #333;
+  -o-box-shadow: 0 2px 6px 0 #333;
+}
+
+ul.toolbarmenu, #rcmKSearchpane ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.toolbarmenu li:first-child, select.decorated option:first-child {
+  border-top: 0;
+}
+
+ul.toolbarmenu li, #rcmKSearchpane ul li {
+  color: #fff;
+  white-space: nowrap;
+  min-width: 130px;
+  margin: 0;
+  border-top: 1px solid #5a5a5a;
+  border-bottom: 1px solid #333;
+}
+
+ul.toolbarmenu li a {
+  display: block;
+  color: #666;
+  text-shadow: 0px 1px 1px #333;
+  text-decoration: none;
+  min-height: 14px;
+  padding: 6px 10px 6px 10px;
+}

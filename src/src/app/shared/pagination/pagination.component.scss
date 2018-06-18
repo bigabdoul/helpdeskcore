@@ -1,0 +1,176 @@
+
+.pagination {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  padding: 4px 6px;
+  border-top: 1px solid #ddd;
+  background: #ebebeb;
+  background: -moz-linear-gradient(top, #ebebeb 0%, #c6c6c6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebebeb), color-stop(100%,#c6c6c6));
+  background: -o-linear-gradient(top, #ebebeb 0%, #c6c6c6 100%);
+  background: -ms-linear-gradient(top, #ebebeb 0%, #c6c6c6 100%);
+  background: linear-gradient(top, #ebebeb 0%, #c6c6c6 100%);
+  border-radius: 0 0 4px 4px;
+}
+
+.iconbutton.listmode.selected {
+  background-position: -26px -477px;
+}
+
+.iconbutton.listmode {
+  width: 26px;
+  height: 20px;
+  background-position: 0 -477px;
+}
+
+.iconbutton {
+  display: inline-block;
+  width: 24px;
+  height: 18px;
+  text-decoration: none;
+  text-indent: -5000px;
+  background: url(/assets/buttons.png) -1000px 0 no-repeat;
+}
+
+.iconbutton.threadmode {
+  width: 26px;
+  height: 20px;
+  background-position: 0 -497px;
+}
+
+.iconbutton.disabled {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: default;
+}
+
+.menuselector {
+  display: inline-block;
+  border: 1px solid #ababab;
+  border-radius: 4px;
+  background: #f8f8f8;
+  background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
+  background: -o-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+  background: -ms-linear-gradient(top, #f9f9f9 0%, #dddddd 100%);
+  background: linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pagination .countcontrols {
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.pagenav .countdisplay {
+  display: inline-block;
+  padding: 3px 1em 0 1em;
+  text-shadow: 0px 1px 1px #fff;
+  min-width: 16em;
+}
+
+.pagenavbuttons {
+  position: relative;
+  top: -2px;
+}
+
+.pagenav.dark .button {
+  font-weight: bold;
+  border-color: #e6e6e6;
+  background: #d8d8d8;
+  background: -moz-linear-gradient(top, #d8d8d8 0%, #bababa 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d8d8d8), color-stop(100%,#bababa));
+  background: -o-linear-gradient(top, #d8d8d8 0%, #bababa 100%);
+  background: -ms-linear-gradient(top, #d8d8d8 0%, #bababa 100%);
+  background: linear-gradient(top, #d8d8d8 0%, #bababa 100%);
+  box-shadow: 0 1px 1px 0 #999;
+  -o-box-shadow: 0 1px 1px 0 #999;
+  -webkit-box-shadow: 0 1px 1px 0 #999;
+  -moz-box-shadow: 0 1px 1px 0 #999;
+}
+
+.pagenav .button {
+  padding: 1px 3px;
+  height: 20px;
+  vertical-align: middle;
+  margin-bottom: 1px;
+}
+
+.button.disabled, input.button.disabled, input.button[disabled], .button.disabled:hover, input.button.disabled:hover, input.button[disabled]:hover {
+  border-color: #c6c6c6;
+  box-shadow: 0 1px 1px 0 rgba(160, 160, 160, 0.4);
+  -o-box-shadow: 0 1px 1px 0 rgba(160, 160, 160, 0.4);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(160, 160, 160, 0.4);
+  -moz-box-shadow: 0 1px 1px 0 rgba(160, 160, 160, 0.4);
+}
+
+label.disabled, .button.disabled {
+  color: #999;
+}
+
+.button {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 2px 5px;
+  color: #525252;
+  text-shadow: 0px 1px 1px #fff;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+  background: #f7f7f7;
+  background: -moz-linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#e6e6e6));
+  background: -o-linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  background: -ms-linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  background: linear-gradient(top, #f9f9f9 0%, #e6e6e6 100%);
+  box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  -o-box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  -moz-box-shadow: 0 1px 1px 0 rgba(140, 140, 140, 0.3);
+  text-decoration: none;
+}
+
+.pagenav .button span.inner {
+  display: inline-block;
+  width: 16px;
+  height: 13px;
+  text-indent: 1000px;
+  overflow: hidden;
+  background: url(/assets/buttons.png) -6px -211px no-repeat;
+}
+
+.button.disabled span.inner {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+.pagenav .prevpage span.inner {
+  background-position: -7px -226px;
+}
+
+.pagenav .nextpage span.inner {
+  background-position: -28px -226px;
+}
+
+.pagenav .lastpage span.inner {
+  background-position: -28px -211px;
+}
+
+.input-group {
+  margin-left: 5px;
+  max-width: 30%;
+  margin-top: 2px;
+}
+
+.input-group .form-control {
+  height: 26px;
+  font-size: .75rem;
+}
+
+.input-group-addon {
+  height: 26px;
+}

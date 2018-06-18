@@ -1,0 +1,26 @@
+.card {
+  font-size: 90%;
+  margin-bottom: 20px;
+}
+
+.card h3, .card-subtitle h3 {
+  font-size: 130%;
+}
+
+.card h4 {
+  font-size: 1rem;
+}
+
+.card-subtitle {
+  border-bottom: 1px solid #edeced;
+  padding-bottom: 10px;
+  margin: 30px 0 20px;
+  color: #333;
+}
+
+.small.alert {
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  padding: .3rem;
+  font-size:12px;
+}

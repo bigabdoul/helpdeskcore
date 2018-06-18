@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h3>Soumettre un nouveau ticket</h3>
+</div>
+<form #f="ngForm" (ngSubmit)="create(f)" class="shadowed-box" novalidate>
+  <div class="form-group">
+    <label for="subject" class="sr-only">Objet</label>
+    <input class="form-control" placeholder="Raison d'ouverture du ticket" id="subject" name="subject" ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="body" class="sr-only">Description</label>
+    <textarea class="form-control" placeholder="Description du problème que vous rencontrez" id="body" name="body" rows="5" ngModel required></textarea>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label for="categoryId">Catégorie de ticket</label>
+          <select id="categoryId" name="categoryId" class="form-control" ngModel required>
+            <option value="" selected>— Sélectionnez une catégorie —</option>
+            <option *ngFor="let cat of categories" [ngValue]="cat.id">{{cat.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="priority">Priorité</label>
+          <select id="priority" name="priority" class="form-control" style="margin-right: 10px; color: inherit;" onclick="this.style.color='inherit';" ngModel required>
+            <option value="-1" style="color:gray;">Basse</option>
+            <option value="0" style="color:green;" selected="selected">Normale</option>
+            <option value="1" style="color:red;">Haute</option>
+            <option value="2" style="color:white;background-color:#AD1818">Critique</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Soumettre</button>
+    <a href="#" routerLink="/tickets/home" class="btn">Annuler</a>
+    <app-spinner [isRunning]="isRequesting"></app-spinner>
+  </div>
+
+  <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+</form>

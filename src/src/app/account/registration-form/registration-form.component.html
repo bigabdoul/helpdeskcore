@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2 title="Please enter your information">Veuillez renseigner ce formulaire</h2>
+    <form #f="ngForm" novalidate (ngSubmit)="registerUser(f)">
+      <div class="form-group">
+        <label for="first-name" title="First name">Prénom</label>
+        <input type="text" class="form-control" id="first-name" placeholder="Prénoms" name="firstName" tmFocus ngModel>
+      </div>
+      <div class="form-group">
+        <label for="last-name" title="Last name">Patronyme</label>
+        <input type="text" class="form-control" id="last-name" placeholder="Nom de famille" name="lastName" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input id="email" type="text" required name="email" validateEmail class="form-control" placeholder="Votre adresse e-mail" ngModel #email="ngModel">
+        <small [hidden]="email.valid || (email.pristine && !submitted)" class="text-danger">Please enter a valid email</small>
+      </div>
+      <div class="form-group">
+        <label for="password" title="Your password">Mot de passe</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="location" title="Your location">Lieu :</label>
+        <input type="text" class="form-control" id="location" placeholder="Votre lieu de travail" required name="location" ngModel>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Je m'enregistre</button>
+        <app-spinner [isRunning]="isRequesting"></app-spinner>
+      </div>
+
+      <div *ngIf="errors" class="alert alert-danger" role="alert">
+        <strong>Erreur !</strong> {{errors}}
+      </div>
+
+    </form>
+  </div>
+</div>
+
+

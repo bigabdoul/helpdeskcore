@@ -1,0 +1,117 @@
+<div class="row" *ngIf="model">
+  <div class="col-md-6">
+    <div class="card summary">
+      <div class="card-header">
+        <h3>
+          <img class="avatar" src="{{model.pictureUrl}}" onerror="this.src = '/assets/guestavatar.png'">
+          &nbsp; {{model.userName}}
+        </h3>
+        <button type="button" class="btn btn-sm btn-primary" routerLink="/user/edit/{{model.id}}">
+          <i class="fa fa-edit icon"></i> Modifier
+        </button>
+      </div>
+      <div class="card-body">
+        <table class="table table-md">
+          <tr>
+            <td>Type de compte :</td>
+            <td>{{model.type}}</td>
+          </tr>
+          <tr>
+            <td>Prénom :</td>
+            <td>{{model.firstName}}</td>
+          </tr>
+          <tr>
+            <td>Nom :</td>
+            <td>{{model.lastName}}</td>
+          </tr>
+          <tr>
+            <td>Sexe :</td>
+            <td>{{model.gender==='F'?'Femme':model.gender==='M'?'Homme':''}}</td>
+          </tr>
+          <tr>
+            <td>E-mail :</td>
+            <td><a href="mailto:{{model.email}}">{{model.email}}</a></td>
+          </tr>
+          <tr>
+            <td>Téléphone :</td>
+            <td>{{model.phone}}</td>
+          </tr>
+          <tr>
+            <td>Extension :</td>
+            <td>{{model.phoneExtension}}</td>
+          </tr>
+          <tr>
+            <td>Organisation :</td>
+            <td>{{model.companyName}}</td>
+          </tr>
+          <tr>
+            <td>Département :</td>
+            <td>{{model.departmentName}}</td>
+          </tr>
+          <tr>
+            <td>Lieu :</td>
+            <td>{{model.location}}</td>
+          </tr>
+          <tr>
+            <td>Dernière activité :</td>
+            <td title="{{model.seenSince}}">{{model.lastSeen}}</td>
+          </tr>
+          <tr>
+            <td>Adresse IP :</td>
+            <td>{{model.ipaddress}}</td>
+          </tr>
+          <tr>
+            <td>Navigateur :</td>
+            <td>{{model.hostName}}</td>
+          </tr>
+          <tr>
+            <td>Langue :</td>
+            <td>{{model.locale}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card history">
+      <div class="card-header">
+        <h3>Historique des tickets</h3>
+      </div>
+      <div class="card-body scrollv">
+        <div class="tickets"*ngIf="history?.tickets">
+          <div class="ticket" *ngFor="let t of history.tickets">
+            <div class="card">
+              <div class="card-header">
+                <h4><a routerLink="/tickets/view/{{t.id}}">{{t.subject}}</a></h4>
+                <p class="date">{{t.issueDate}}</p>
+              </div>
+              <div class="card-body">
+                {{t.body}}
+              </div>
+            </div>
+            <span class="date">{{t.issuedSince}}</span>
+          </div>
+        </div>
+
+        <div class="comments" *ngIf="history?.comments">
+          <div class="comment" *ngFor="let comment of history.comments">
+            <div class="card{{comment.system?' grey sys':''}}">
+              <div class="card-header">
+                <p><a routerLink="/tickets/view/{{comment.issueId}}">{{comment.issueSubject}}</a></p>
+                <p class="comment-author">
+                  <span *ngIf="comment.author">{{comment.author}}</span>
+                  <span *ngIf="comment.authorEmail && admin()">&lt;{{comment.authorEmail}}&gt;</span>
+                </p>
+                <p class="date">{{comment.date}}</p>
+              </div>
+              <div class="card-body">
+                {{comment.body}}
+              </div>
+            </div>
+            <span class="date">{{comment.since}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

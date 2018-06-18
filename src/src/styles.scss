@@ -1,0 +1,371 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*
+ * Base structure
+ */
+
+html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, input, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+label, p {
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+}
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  /*font-family: "Open Sans",sans-serif;*/
+  font-size: .9rem;
+  padding-top: 3.5rem;
+  /*background: url(assets/linen.jpg) repeat #d1d5d8;*/
+}
+
+/*
+ * Typography
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+h1 {
+  padding-bottom: 9px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.shadowed-box, .shadowed .card {
+  border: 1px solid #d2d5d7;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px -2px #ddd;
+  background-color: #fafafa;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.shadowed .card {
+  padding: 0;
+}
+
+.card.summary .card-body {
+  padding: 0;
+}
+
+.card.summary table {
+  margin-bottom: 0;
+}
+
+a, a:visited {
+  color: #2980b9;
+}
+
+a:hover {
+  color: #5daef5;
+}
+
+a.btn-primary, a.btn-primary:visited, a.btn-info, a.btn-info:visited {
+  color: #fff;
+}
+
+a.btn-primary:hover {
+  color: #eee;
+}
+
+.btn-group-sm > .btn, .btn-sm {
+  padding: .15rem .3rem;
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 20px 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.grey {
+  font-size: 13px !important;
+}
+
+.grey, .grey label, .grey h1, .grey h2, .grey h3 {
+  color: #666;
+}
+
+.grey2 {
+  color: #8e8e8e;
+  font-size: 11px !important;
+  line-height: 12px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.menulist a {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menulist .icon {
+  float: left;
+  margin-right: 10px;
+  font-size: 28px;
+  color: #35383e;
+  margin-top: 4px;
+}
+
+.menu-item {
+  margin-left: 42px;
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email], input[type=file], select, textarea {
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  background: #fff;
+  margin-right: 5px;
+  box-sizing: border-box;
+}
+
+input[type=submit], input[type=text], input[type=email] {
+  -webkit-appearance: none;
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(1.913rem + 2px);
+}
+
+.form-control {
+  font-size: .85rem;
+  padding: .3rem .5rem;
+}
+
+button, input, select, textarea, pre {
+  color: #000;
+  font-size: 13px;
+  margin: 0;
+}
+
+button:disabled, input:disabled, select:disabled, textarea:disabled {
+  cursor:not-allowed;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  color: white;
+  background-color: black;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  top: 2px;
+  position: relative;
+}
+
+
+/* ON/OFF checkbox */
+.onoff {
+  display: inline-block;
+  margin-right: 5px;
+  top: -1px;
+  position: relative;
+  width: 34px;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoff-checkbox {
+  display: none;
+}
+
+.onoff-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  line-height: 15px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  background-color: #eaeaea;
+  transition: background-color .2s ease-in;
+}
+
+.onoff-checkbox:checked + .onoff-label, .onoff-checkbox:checked + .onoff-label:before {
+  border-color: #3f8cc9;
+}
+
+.onoff-label:before {
+  content: "";
+  display: block;
+  width: 15px;
+  margin: 0;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 17px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  transition: all .2s ease-in 0s;
+}
+
+.onoff-checkbox:checked + .onoff-label {
+  background-color: #3f8cc9;
+}
+
+.onoff-checkbox:checked + .onoff-label:before {
+  right: 0;
+}
+
+.fade-inout {
+  transition: all .2s ease-in-out .2s;
+}
+
+/** table styles */
+
+.table th a {
+  color: #343a40;
+}
+
+.table td, .table th {
+  font-size: 94%;
+  vertical-align: middle;
+}
+
+.table th {
+  height: 14px;
+  font-weight: bold;
+  font-size: 11px;
+  background-color: #eaeced;
+  text-align: left;
+  text-transform: uppercase;
+  color: #666;
+  padding: 12px 20px 10px;
+  border-bottom: 1px solid #e3e3e3;
+  text-shadow: 1px 1px #f1f2f2;
+  vertical-align: middle;
+}
+
+.table tbody tr:first-child td {
+  border-top: none;
+}
+
+.table .btn-group-sm > .btn, table .btn-sm {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.table th, table th {
+  color: #69939e;
+  font-size: 11px;
+  font-weight: bold;
+  background: #d6eaf3;
+  background: -moz-linear-gradient(left, #e3f2f6 0, #d6eaf3 14px, #d6eaf3 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0,#e3f2f6), color-stop(8%,#d6eaf3), color-stop(100%,#d6eaf3));
+  background: -o-linear-gradient(left, #e3f2f6 0, #d6eaf3 14px, #d6eaf3 100%);
+  background: -ms-linear-gradient(left, #e3f2f6 0, #d6eaf3 14px,#d6eaf3 100%);
+  background: linear-gradient(left, #e3f2f6 0, #d6eaf3 14px, #d6eaf3 100%);
+  border-left: 1px solid #bbd3da;
+  padding: 8px 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table td, table td, tbody td {
+  padding: 5px 7px;
+  /*border-bottom: 1px solid #ddd;*/
+  border-left: 1px dotted #bbd3da;
+  /*white-space: nowrap;*/
+  cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #fff;
+}
+
+.table tfoot td {
+  border-top: none;
+  padding: 0;
+}
+
+.scrollv {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.scrollv2 {
+  max-height: 476px;
+  overflow-y: auto;
+}
+
+.alert {
+  font-size: 12px;
+  padding: .3rem;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-warn {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.alert-dismissible .close {
+  padding: 5px;
+}
+
+.close {
+  font-size: 1rem;
+}
+
+.ui-growl {
+  top: 60px;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    margin-top: 10px;
+  }
+}

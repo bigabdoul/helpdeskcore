@@ -1,0 +1,178 @@
+<div class="row">
+  <div class="col-md-9 offset-md-1">
+    <form #f="ngForm" (submit)="update(f)" *ngIf="model" novalidate>
+      <div class="shadowed-box">
+        <div class="form-group" style="position:relative;">
+          <img class="avatar" src="{{model.pictureUrl}}" onerror="this.src = '/assets/guestavatar.png'">
+          <a href="javascript:void(0)" class="changeAvatar"><i class="fa fa-cog"></i></a>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="userName">Nom d'utilisateur</label>
+              <input class="form-control" placeholder="Nom d'utilisateur" id="userName" name="userName" [(ngModel)]="model.userName" maxlength="100" disabled>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" placeholder="Votre adresse électronique (e-mail)" id="email" name="email" [(ngModel)]="model.email" maxlength="100">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="firstName">Prénom</label>
+              <input class="form-control" placeholder="Prénom" id="firstName" name="firstName" [(ngModel)]="model.firstName" maxlength="100">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="lastName">Nom</label>
+              <input class="form-control" placeholder="Nom de famille" id="lastName" name="lastName" [(ngModel)]="model.lastName" maxlength="100">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="gender">Sexe</label>
+              <select id="gender" name="gender" [(ngModel)]="model.gender" class="form-control">
+                <option value="" selected="selected">- Sexe -</option>
+                <option value="F">Femme</option>
+                <option value="M">Homme</option>
+                <option value="U">Ne pas révéler</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="phone">Numéro de téléphone</label>
+              <input class="form-control" placeholder="Numéro de téléphone" id="phone" name="phone" [(ngModel)]="model.phone">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="extension">Extension</label>
+              <input class="form-control" placeholder="Extension" id="extension" name="phoneExtension" [(ngModel)]="model.phoneExtension">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="location">Lieu</label>
+              <input class="form-control" placeholder="Lieu" id="location" name="location" [(ngModel)]="model.location">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="companyName">Entreprise / Organisation</label>
+              <input class="form-control" placeholder="Nom d'entreprise ou d'organisation" id="companyName" name="companyName" [(ngModel)]="model.companyName">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="departmentId">Département</label>
+              <select id="departmentId" name="departmentId" class="form-control" [(ngModel)]="model.departmentId">
+                <option value="" selected>- Sélectionnez -</option>
+                <option *ngFor="let d of departments" [ngValue]="d.id">{{d.name}}</option>
+                <option value="-1">Autre...</option>
+                <!--<option value="-2" style="color:#ccc">Gérer les départements...</option>-->
+              </select>
+            </div>
+            <div class="form-group">
+              <input name="departmentName" class="form-control" [(ngModel)]="model.departmentName" placeholder="Nom du nouveau département" *ngIf="model.departmentId==-1">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p>Message d'accueil lors de l'ajout d'une réponse ("Salut", "Bonjour", etc)</p>
+          <p class="grey2">
+            Vous pouvez utiliser les étiquettes #Prenom# et #Nom#; elles seront remplacées par le nom du créateur du ticket. Par exemple "Salut, #Prenom#"
+          </p>
+          <input maxlength="100" name="greeting" class="form-control" [(ngModel)]="model.greeting">
+        </div>
+
+        <div class="form-group">
+          <p>Signature</p>
+          <textarea cols="20" maxlength="2000" name="signature" rows="3" class="form-control" placeholder="Signature" [(ngModel)]="model.signature"></textarea>
+        </div>
+
+        <div class="form-group">
+          Autres remarques (de {{model.userName}})
+          <br>
+          <textarea cols="20" maxlength="4000" name="notes" rows="5" class="form-control" [(ngModel)]="model.notes"></textarea>
+        </div>
+      </div>
+
+      <div class="shadowed-box">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="onoff">
+              <input name="sendEmail" type="hidden" value="false">
+              <input class="onoff-checkbox" id="sendEmail" name="sendEmail" type="checkbox" value="true" [(ngModel)]="model.sendEmail">
+              <label class="onoff-label" for="sendEmail"></label>
+            </div>
+            <label for="sendEmail">Activer les notifications par e-mail</label>
+          </div>
+          <div class="col-sm-6" *ngIf="model.role!=='user'">
+            <div class="technotification">
+              <div class="onoff">
+                <input name="sendNewTicketTechEmail" type="hidden" value="false">
+                <input class="onoff-checkbox" id="sendNewTicketTechEmail" name="sendNewTicketTechEmail" type="checkbox" value="true" [(ngModel)]="model.sendNewTicketTechEmail">
+                <label class="onoff-label" for="sendNewTicketTechEmail"></label>
+              </div>
+              <label for="sendNewTicketTechEmail">Activer les notifications "nouveau ticket"</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card roles" *ngIf="admin()">
+        <div class="card-header"><h3>Rôles</h3></div>
+        <div class="card-body grey">
+          <input id="user" name="role" type="radio" value="user" [(ngModel)]="model.role">
+          <label for="user"><b>Utilisateur ordinaire</b></label>
+          <div style="margin-left: 20px;">
+            <p>Peut soumettre de nouveaux tickets et donner des réponses à ses propres tickets.</p>
+            <input name="isManager" type="hidden" value="false">
+            <input type="checkbox" value="true" id="isManager" name="isManager" [disabled]="model.role!=='user'" [(ngModel)]="model.isManager">
+            <label for="isManager">
+              Manager &nbsp;
+              <span class="grey2">(Peut visionner et fermer les tickets des autres utilisateurs au sein de la même entreprise/organisation.)</span>
+            </label>
+          </div>
+
+          <input id="tech" name="role" type="radio" value="tech" [(ngModel)]="model.role">
+          <label for="tech"><b>Technicien</b></label>
+          <p class="grey" style="margin-left: 20px;">
+            Peut répondre et fermer les tickets entrants, visionner les rapports, etc. Reçoit également les notifications d'e-mail concernant les nouveaux tickets dans ses catégories.
+            <!--<br>
+            <a href="#" class="showPermissions" style="display:none">Optionally, edit permissions to particular ticket-categories</a>&nbsp;-->
+          </p>
+
+          <input id="admin" name="role" type="radio" value="admin" [(ngModel)]="model.role">
+          <label for="admin"><b>Administrateur</b></label>
+          <div class="grey" style="margin-left: 20px;">Peut tout faire</div>
+          <input type="hidden" name="role" value="{{model.role}}" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Enregistrer</button>
+        <a class="btn btn-sm" href="#" role="button" routerLink="/user/view/{{model.id}}"><i class="fa fa-user icon"></i> Annuler</a>
+        <span *ngIf="admin()">&nbsp;<a href="#" routerLink="/admin/users" class="btn btn-sm"><i class="fa fa-list icon"></i> Utilisateurs</a></span>
+        <app-spinner [isRunning]="isRequesting"></app-spinner>
+      </div>
+
+      <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+    </form>
+  </div>
+</div>

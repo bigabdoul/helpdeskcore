@@ -1,0 +1,74 @@
+<div *ngIf="model">
+  <h3 class="page-header">{{model.message}}</h3>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <img class="avatar" src="{{model.pictureUrl}}" onerror="this.src = '/assets/guestavatar.png'">
+            <a href="javascript:void(0)" class="changeAvatarLink"><i class="fa fa-cog"></i></a>
+          </div>
+          <dl>
+            <dt>Nom :</dt>
+            <dd>
+              <a href="#" class="btn btn-sm btn-primary" routerLink="/user/edit/{{model.id}}"><i class="fa fa-edit icon"></i></a>
+              <a href="#" routerLink="/user/view/{{model.id}}">{{model.firstName}} {{model.lastName}}</a>
+            </dd>
+            <dt>Lieu :</dt>
+            <dd>{{model.location}}</dd>
+          </dl>
+        </div>
+        <div class="col-md-8">
+          <div class="menulist">
+            <div class="admin-group" *ngIf="model.admin">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a href="#" routerLink="/admin/users"><i class="fa fa-user icon" aria-hidden="true"></i></a>
+                    <div class="menu-item">
+                      <a href="#" routerLink="/admin/users" role="button">Utilisateurs et entreprises</a>
+                      <div class="grey">Les utilisateurs et leurs entreprises</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <a routerLink="/admin/categories"><i class="fa fa-folder icon" aria-hidden="true"></i></a>
+                    <div class="menu-item">
+                      <a href="#" routerLink="/admin/categories" role="button">Catégories de ticket</a>
+                      <div class="grey">Ajout/suppression de catégories de ticket.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a routerLink="/admin/email-settings"><i class="fa fa-envelope icon" aria-hidden="true"></i></a>
+                    <div class="menu-item">
+                      <a href="#" routerLink="/admin/email-settings" role="button" title="Email settings">Configuration de la messagerie</a>
+                      <div class="grey" title="Email-integration settings - notifications, inbound emails etc.">Paramètres d'intégration e-mail, notifications, messages entrants, etc.</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6">
+                  <a href="#" routerLink="/tickets/home"><i class="fa fa-list icon" aria-hidden="true"></i></a>
+                  <div class="menu-item">
+                    <a href="#" routerLink="/tickets/home" role="button">Tickets</a>
+                    <div class="grey">Tickets que j'ai soumis / je gère</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  </div>
+</div>

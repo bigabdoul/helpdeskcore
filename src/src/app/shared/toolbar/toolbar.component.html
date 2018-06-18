@@ -1,0 +1,51 @@
+<div id="messagetoolbar" class="toolbar">
+  <a class="button checkmail" title="Check for new messages" href="#" (click)="command('checkmail')">Refresh</a>
+  <a class="button compose" title="Create a new message" href="#" (click)="command('compose','')">Compose</a>
+  <span class="spacer"></span>
+  <a class="button reply" title="Reply to sender" href="#" (click)="command('reply')">Reply</a>
+  <span class="dropbutton">
+    <a class="button reply-all" title="Reply to list or to sender and all recipients" href="#" (click)="command('reply-all')">Reply all</a>
+    <span class="dropbuttontip" id="replyallmenulink" (click)="showPopup('replyallmenu')"></span>
+  </span>
+  <span class="dropbutton">
+    <a class="button forward" title="Forward the message" href="#" (click)="command('forward')">Forward</a>
+    <span class="dropbuttontip" id="forwardmenulink" (click)="showPopup('forwardmenu')"></span>
+  </span>
+  <a class="button delete" title="Move message to trash" href="#" (click)="command('delete')">Delete</a>
+
+  <a id="markmessagemenulink" class="button markmessage" title="Mark messages" (click)="showPopup('markmessagemenu')" href="#">Mark</a>
+  <a id="messagemenulink" class="button more" title="More actions..." (click)="showPopup('messagemenu')" href="#">More</a>
+
+  <div id="forwardmenu" class="popupmenu" *ngIf="shown('forwardmenu')">
+    <ul class="toolbarmenu">
+      <li><a class="forwardlink active" href="#" (click)="command('forward-inline')">Forward inline</a></li>
+      <li><a class="forwardattachmentlink active" ihref="#" (click)="command('forward-attachment')">Forward as attachment</a></li>
+    </ul>
+  </div>
+
+  <div id="replyallmenu" class="popupmenu" *ngIf="shown('replyallmenu')">
+    <ul class="toolbarmenu">
+      <li><a class="replyalllink active" href="#" (click)="command('reply-all')">Reply all</a></li>
+      <li><a class="replylistlink" href="#" (click)="command('reply-list')">Reply list</a></li>
+    </ul>
+  </div>
+
+  <div id="messagemenu" class="popupmenu" *ngIf="shown('messagemenu')">
+    <ul class="toolbarmenu iconized">
+      <li><a class="icon active" href="#" (click)="command('print')"><span class="icon print">Print this message</span></a></li>
+      <li><a class="icon active" href="#" (click)="command('download')"><span class="icon download">Download (.eml)</span></a></li>
+      <li><a class="icon active" href="#" (click)="command('edit')"><span class="icon edit">Edit as new</span></a></li>
+      <li><a class="icon active" href="#" (click)="command('viewsource')"><span class="icon viewsource">Show source</span></a></li>
+      <li><a target="_blank" class="icon active" href="#" (click)="command('open')"><span class="icon extwin">Open in new window</span></a></li>
+    </ul>
+  </div>
+
+  <div id="markmessagemenu" class="popupmenu" *ngIf="shown('markmessagemenu')">
+    <ul class="toolbarmenu iconized">
+      <li><a class="icon active" href="#" (click)="command('mark','read')"><span class="icon read">As read</span></a></li>
+      <li><a class="icon active" href="#" (click)="command('mark','unread')"><span class="icon unread">As unread</span></a></li>
+      <li><a class="icon active" href="#" (click)="command('mark','flagged')"><span class="icon flagged">As flagged</span></a></li>
+      <li><a class="icon active" href="#" (click)="command('mark','unflagged')"><span class="icon unflagged">As unflagged</span></a></li>
+    </ul>
+  </div>
+</div>

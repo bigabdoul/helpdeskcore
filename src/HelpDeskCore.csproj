@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <AssemblyName>HelpDeskCore</AssemblyName>
+    <RootNamespace>HelpDeskCore</RootNamespace>
+    <PackageId>HelpDeskCore</PackageId>
+    <Authors>Abdourahamane Kaba</Authors>
+    <Company>Karfamsoft</Company>
+    <Product>Help Desk Core</Product>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <WarningsNotAsErrors>CS8032;$(WarningsNotAsErrors)</WarningsNotAsErrors>
+    <UserSecretsId>helpdeskcore-368d7899-bc0b-4ad4-978c-10717962d602</UserSecretsId>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="packages\**" />
+    <Compile Remove="wwwroot\fonts\**" />
+    <Content Remove="packages\**" />
+    <Content Remove="wwwroot\fonts\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Models\Entities\**" />
+    <EmbeddedResource Remove="packages\**" />
+    <EmbeddedResource Remove="wwwroot\fonts\**" />
+    <None Remove="packages\**" />
+    <None Remove="wwwroot\fonts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\shared\components\base-view.ts" />
+    <None Remove="src\app\shared\components\detail-edit-view.ts" />
+    <None Remove="src\app\shared\components\detail-view.ts" />
+    <None Remove="src\app\tickets\tickets.routing.ts" />
+    <None Remove="src\app\user\user.routing.ts" />
+    <None Remove="src\assets\font-awesome.min.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="fluentvalidation.aspnetcore" Version="7.3.3" />
+    <PackageReference Include="MailKit" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.8.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <!--https://github.com/aspnet/EntityFrameworkCore/issues/8996-->
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CoreTools\CoreTools.csproj" />
+    <ProjectReference Include="..\..\efcore-repository\CoreRepository.csproj" />
+    <ProjectReference Include="..\HelpDeskCore.Data\HelpDeskCore.Data.csproj" />
+    <ProjectReference Include="..\HelpDeskCore.Resources\HelpDeskCore.Resources.csproj" />
+    <ProjectReference Include="..\..\MailkitTools\MailkitTools.DependencyInjection\MailkitTools.DependencyInjection\MailkitTools.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\MailkitTools\MailkitTools\MailkitTools.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\shared\components\base-view.ts" />
+    <TypeScriptCompile Include="src\app\shared\components\detail-edit-view.ts" />
+    <TypeScriptCompile Include="src\app\shared\components\detail-view.ts" />
+    <TypeScriptCompile Include="src\app\tickets\tickets.routing.ts" />
+    <TypeScriptCompile Include="src\app\user\user.routing.ts" />
+  </ItemGroup>
+  <Target Name="AngularBuild" AfterTargets="Build">
+    <Exec Command="npm run build" />
+  </Target> 
+</Project>

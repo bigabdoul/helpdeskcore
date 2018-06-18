@@ -1,0 +1,45 @@
+.card.history {
+  padding: .5rem;
+  background-color: transparent;
+}
+
+.card.history > .card-body {
+  padding: 0;
+  padding-top: 5px;
+}
+
+.card-header {
+  border-bottom: none;
+  padding: .3rem;
+}
+
+.card-header > h3 {
+  float: left;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.card-header > button {
+  float: right;
+}
+
+.ticket .card {
+  background-color: #fafafa;
+}
+
+.ticket .card-header {
+  background-color: transparent;
+}
+
+.ticket .card-header h4 {
+  font-size: 14px;
+}
+
+.ticket .card-body {
+  padding: .3rem;
+}
+
+.date {
+  font-size: 85%;
+  font-style: italic;
+}

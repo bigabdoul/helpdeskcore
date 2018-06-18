@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-6">     
+      <a *ngIf="!isRequesting" href="javascript:void(0)" (click)="launchFbLogin()"> <img class="img-fluid" src="/assets/facebook-login.png" /></a>
+      <app-spinner [isRunning]="isRequesting"></app-spinner>
+      <div *ngIf="failed" class="alert alert-danger" role="alert">
+        <p title="Your facebook login failed."><strong>Oops!</strong> Votre tentative de connexion à Facebook a échoué.</p>
+        <ul>
+          <li>Erreur : {{error}}</li>
+          <li>Description : {{errorDescription}}</li>
+        </ul>
+      </div>
+    </div>
+</div>

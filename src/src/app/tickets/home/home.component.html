@@ -1,0 +1,40 @@
+<div class="page-header clearfix">
+  <h3 class="float-left">Tickets</h3>
+  <span *ngIf="admin()" class="float-right">
+    <a href="#" routerLink="/admin/users"><i class="fa fa-user icon"></i> Utilisateurs</a>
+    <a href="#" routerLink="/admin/categories"><i class="fa fa-list icon"></i> Catégories</a>
+  </span>
+</div>
+<div class="tickets form-group scrollv">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th><a href="javascript:;" (click)="sortCol(4)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(4)"></i> Objet</a></th>
+        <th>#</th>
+        <th><a href="javascript:;" (click)="sortCol(2)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(2)"></i> Priorité</a></th>
+        <th><a href="javascript:;" (click)="sortCol(10)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(10)"></i> Statut</a></th>
+        <th><a href="javascript:;" (click)="sortCol(3)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(3)"></i> Date</a></th>
+        <th><a href="javascript:;" (click)="sortCol(8)" title="Dernière modification"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(8)"></i> Modification</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of items" class="ticket-status-{{t.statusId}}">
+        <td><a class="btn btn-primary btn-sm" href="#" role="button" routerLink="/tickets/edit/{{t.id}}" title="Modifier"><i class="fa fa-edit icon"></i></a></td>
+        <td><a href="#" routerLink="/tickets/view/{{t.id}}">{{t.subject}}</a></td>
+        <td>{{t.id}}</td>
+        <td>{{t.priority}}</td>
+        <td>{{t.status}}</td>
+        <td title="{{t.issueDate}}">{{t.issuedSince}}</td>
+        <td title="{{t.lastUpdated}}">{{t.updatedSince}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7">
+          <app-pagination (goFirst)="fetchFirst()" (goPrev)="fetchPrev()" (goNext)="fetchNext()" (goLast)="fetchLast()" [page]="page" [pageSize]="pageSize" [totalCount]="totalCount" [loading]="isRequesting" [searchEnabled]="true" (search)="search($event)"></app-pagination>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

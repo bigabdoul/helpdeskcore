@@ -1,0 +1,90 @@
+<div class="page-header">
+  <h3>Modifier une catégorie de ticket</h3>
+</div>
+<div class="card shadowed-box">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-9 offset-md-1">
+        <form #f="ngForm" (submit)="update(f)" *ngIf="model" novalidate>
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3" for="name">Nom de la catégorie :</label>
+              <input class="col-md-8 form-control" id="name" name="name" value="" [(ngModel)]="model.name" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3" for="sectionId">Section :</label>
+              <select class="col-md-8 form-control" id="sectionId" name="sectionId" [(ngModel)]="model.sectionId">
+                <option value="">(Aucune)</option>
+                <option *ngFor="let s of sections" [ngValue]="s.id">{{s.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3" for="notes">Description :</label>
+              <textarea class="col-md-8 form-control" id="notes" name="notes" value="" [(ngModel)]="model.notes"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3">
+                Qui peut créer des tickets (et visionner les articles de la base de connaissances) dans cette catégorie ?
+              </div>
+              <div class="col-md-8">
+                <input type="radio" name="mode" [(ngModel)]="model.mode" value="Everyone" id="rbEveryone"> <label for="rbEveryone">Tout le monde (recommandé)</label><br>
+                <input type="radio" name="mode" [(ngModel)]="model.mode" value="TechsOnly" id="rbTechsOnly"> <label for="rbTechsOnly">Technicien.ne.s seulement</label><br>
+                <input type="radio" name="mode" [(ngModel)]="model.mode" value="SpecificUsers" id="rbSpecificUsers"> <label for="rbSpecificUsers">Utilisateurs spécifiques</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8 offset-md-3">
+                <div class="form-group">
+                  <div class="onoff">
+                    <input name="differentFrom" type="hidden" value="false">
+                    <input class="onoff-checkbox" type="checkbox" value="true" id="differentFrom" name="differentFrom" [(ngModel)]="model.differentFrom">
+                    <label class="onoff-label" for="differentFrom"></label>
+                  </div>
+                  <label for="differentFrom" title="Seuelement dans cette catégorie">Utiliser une adresse "De" différente des notifications e-mail</label>
+                  <div style="margin-left: 15px;" *ngIf="model.differentFrom">
+                    <div class="form-group">
+                      <input id="fromAddress" name="fromAddress" placeholder="E-mail" class="email form-control" [(ngModel)]="model.fromAddress">
+                    </div>
+                    <div class="form-group">
+                      <input id="fromName" name="fromName" placeholder="Nom de l'expéditeur &quot;De&quot;" class="form-control" [(ngModel)]="model.fromName">
+                    </div>
+                    <input name="fromAddressInReplyTo" type="hidden" value="false">
+                    <input id="fromAddressInReplyTo" name="fromAddressInReplyTo" type="checkbox" value="true" [(ngModel)]="model.fromAddressInReplyTo">
+                    <label for="fromAddressInReplyTo">L'utiliser aussi pour "répondre-à" (reply-to)</label>
+                    <br>
+                    <span class="grey2">
+                      Elle sera utilisée comme l'adresse "De" dans tous les e-mails de notification dans cette catégorie.
+                      Cette adresse devrait être liée à Help Desk comme une boîte de réception, sinon les réponses aux e-mails de notifications pourraient être perdues.
+                    </span>
+                  </div>
+                </div>
+
+                <div class="onoff">
+                  <input name="kbOnly" type="hidden" value="false">
+                  <input class="onoff-checkbox" id="kbOnly" name="kbOnly" type="checkbox" value="true" [(ngModel)]="model.kbOnly">
+                  <label class="onoff-label" for="kbOnly"></label>
+                </div>
+                <label for="kbOnly">Cette catégorie est utilisée seulement pour la base de connaissances (pas pour les tickets).</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Enregistrer</button>
+            <a class="btn btn-sm" href="#" role="button" routerLink="/admin/categories"><i class="fa fa-list icon"></i> Annuler</a>
+            <app-spinner [isRunning]="isRequesting"></app-spinner>
+          </div>
+
+          <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+        </form>
+      </div>
+    </div>
+  </div></div>

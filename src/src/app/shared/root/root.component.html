@@ -1,0 +1,26 @@
+<div class="row">
+  <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/dashboard/home"><i class="fa fa-home icon"></i> Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/tickets/home"><i class="fa fa-list icon"></i> Tickets</a>
+      </li>
+    </ul>
+    <ul class="nav nav-pills flex-column" *ngIf="admin()">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/users"><i class="fa fa-user icon"></i> Utilisateurs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/categories"><i class="fa fa-list icon"></i> Catégories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/email-settings"><i class="fa fa-envelope icon"></i> Paramètres Messagerie</a>
+      </li>
+    </ul>
+  </nav>
+  <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+    <router-outlet></router-outlet>
+  </main>
+</div>

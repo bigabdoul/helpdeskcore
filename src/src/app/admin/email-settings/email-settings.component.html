@@ -1,0 +1,324 @@
+<div class="row" *ngIf="model">
+  <div class="col-md-9 offset-md-1">
+    <form #f="ngForm" (ngSubmit)="update(f)" novalidate class="shadowed">
+      <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-primary" [disabled]="f.invalid || isRequesting">Enregistrer les paramètres</button>
+        <a class="btn btn-sm" href="#" role="button" routerLink="/dashboard/home"><i class="fa fa-cog icon"></i> Annuler</a>
+      </div>
+      <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+      <div *ngIf="message" class="small alert alert-success" role="alert">{{message}}</div>
+      <div class="card">
+        <div class="card-header"><h3>Paramètres des e-mails entrants</h3></div>
+        <div class="card-body">
+          <a href="#" class="btn btn-sm" role="button">Editer les boîtes de réception entrantes</a>
+          <p class="grey2" title="Helpdesk Core will periodically check these email addresses and generate tickets from the incoming emails">
+            Helpdesk Core vérifiera périodiquement ces adresses e-mail et générer des tickets à partir des e-mails entrants.
+          </p>
+          <hr />
+          <div class="form-group">
+            <label for="newTicketsDefaultCategoryId" title="New tickets go to default category:">Les nouveaux tickets vont dans la catégorie par défaut :</label>
+            <select name="incoming.newTicketsDefaultCategoryId" id="newTicketsDefaultCategoryId" [(ngModel)]="model.incoming.newTicketsDefaultCategoryId" class="form-control">
+              <option value="">(Aucune)</option>
+              <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
+              <!--<optgroup label="Sales">
+            <option value="5" group="Sales">Payment issues</option>
+            <option value="6" group="Sales">Pre-sales questions</option>
+          </optgroup>
+          <optgroup label="Technical">
+            <option selected="selected" value="1" group="Technical">Bug reports</option>
+            <option value="2" group="Technical">Feature requests</option>
+            <option value="3" group="Technical">Hardware issues</option>
+            <option value="4" group="Technical">Other</option>
+          </optgroup>-->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="onoff">
+              <input type="hidden" name="incoming.acceptEmailsFromUnregisteredUsers" value="false" />
+              <input type="checkbox" name="incoming.acceptEmailsFromUnregisteredUsers" value="true" id="acceptEmailsFromUnregisteredUsers" class="onoff-checkbox" [(ngModel)]="model.incoming.acceptEmailsFromUnregisteredUsers" />
+              <label class="onoff-label" for="acceptEmailsFromUnregisteredUsers"></label>
+            </div>
+            <label for="acceptEmailsFromUnregisteredUsers" title="Accept emails from unregistered users.">Accepter les e-mails des utilisateurs non-enregistrés.</label>
+          </div>
+
+          <div class="form-group">
+            <div class="onoff">
+              <input type="hidden" name="incoming.addEmailsFromCcAndToForTicketSubscribers" value="false" />
+              <input type="checkbox" name="incoming.addEmailsFromCcAndToForTicketSubscribers" value="true" id="addEmailsFromCcAndToForTicketSubscribers" class="onoff-checkbox" [(ngModel)]="model.incoming.addEmailsFromCcAndToForTicketSubscribers" />
+              <label class="onoff-label" for="addEmailsFromCcAndToForTicketSubscribers"></label>
+            </div>
+            <label for="addEmailsFromCcAndToForTicketSubscribers" title="Add all emails from CC and TO fields to ticket-subscribers.">Ajouter tous les e-mails des champs 'CC' et 'À' aux souscripteurs de tickets.</label>
+          </div>
+
+          <div class="form-group">
+            <div class="onoff">
+              <input type="hidden" name="incoming.extractOriginalSenderFromForwardedEmailsCreateTicket" value="false" />
+              <input type="checkbox" name="incoming.extractOriginalSenderFromForwardedEmailsCreateTicket" value="true" id="extractOriginalSenderFromForwardedEmailsCreateTicket" class="onoff-checkbox" [(ngModel)]="model.incoming.extractOriginalSenderFromForwardedEmailsCreateTicket" />
+              <label class="onoff-label" for="extractOriginalSenderFromForwardedEmailsCreateTicket"></label>
+            </div>
+            <label for="extractOriginalSenderFromForwardedEmailsCreateTicket" title="Extract the original sender from forwarded emails and create a ticket on their behalf.">Extraire l'expéditeur original des e-mails transférés et créer un ticket pour lui.</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h3>Notifications</h3></div>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="onoff">
+              <input type="hidden" name="notifications.enabled" value="false" />
+              <input type="checkbox" name="notifications.enabled" value="true" id="notificationsEnabled" class="onoff-checkbox" [(ngModel)]="model.notifications.enabled" />
+              <label class="onoff-label" for="notificationsEnabled"></label>
+            </div>
+            <label for="notificationsEnabled" title="Email notifications enabled.">Notifications d'e-mails activées</label>
+          </div>
+          <div class="notification-settings" *ngIf="model.notifications.enabled">
+            <hr />
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.ticketConfirmationNotification" value="false" />
+                <input type="checkbox" name="notifications.ticketConfirmationNotification" value="true" id="ticketConfirmationNotification" class="onoff-checkbox" [(ngModel)]="model.notifications.ticketConfirmationNotification" />
+                <label class="onoff-label" for="ticketConfirmationNotification"></label>
+              </div>
+              <label for="ticketConfirmationNotification" title="Ticket confirmation notification (the one users get after submitting a new ticket)">Notifications de confirmation de ticket (celle que les utilisateurs reçoivent après avoir soumis un nouveau ticket)</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.ticketClosedNotification" value="false" />
+                <input type="checkbox" name="notifications.ticketClosedNotification" value="true" id="ticketClosedNotification" class="onoff-checkbox" [(ngModel)]="model.notifications.ticketClosedNotification" />
+                <label class="onoff-label" for="ticketClosedNotification"></label>
+              </div>
+              <label for="ticketClosedNotification" title="'Ticket closed' notification">Notifications 'Ticket fermé'</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.notifyAllAdmins" value="false" />
+                <input type="checkbox" name="notifications.notifyAllAdmins" value="true" id="notifyAllAdmins" class="onoff-checkbox" [(ngModel)]="model.notifications.notifyAllAdmins" />
+                <label class="onoff-label" for="notifyAllAdmins"></label>
+              </div>
+              <label for="notifyAllAdmins" title="Notify all administrators of new tickets">Notifier les nouveaux tickets à tous les administrateurs</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.notifyTechs" value="false" />
+                <input type="checkbox" name="notifications.notifyTechs" value="true" id="notifyTechs" class="onoff-checkbox" [(ngModel)]="model.notifications.notifyTechs" />
+                <label class="onoff-label" for="notifyTechs"></label>
+              </div>
+              <label for="notifyTechs" title="Notify technicians of new tickets in their categories">Notifier les nouveaux tickets aux techniciens dans leurs catégories</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.notifyAllTechsOnCustomerUpdate" value="false" />
+                <input type="checkbox" name="notifications.notifyAllTechsOnCustomerUpdate" value="true" id="notifyAllTechsOnCustomerUpdate" class="onoff-checkbox" [(ngModel)]="model.notifications.notifyAllTechsOnCustomerUpdate" />
+                <label class="onoff-label" for="notifyAllTechsOnCustomerUpdate"></label>
+              </div>
+              <label for="notifyAllTechsOnCustomerUpdate" title="Notify ALL technicians in a category when a customer updates a ticket (not just the ticket-technician and ticket-subscribers)">Notifier TOUS les techniciens d'une catégorie lorsqu'un client met à jour un ticket (pas uniquement le technicien de ticket and les souscripteurs de ticket)</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.notifyAllTechsOnTechTakeOver" value="false" />
+                <input type="checkbox" name="notifications.notifyAllTechsOnTechTakeOver" value="true" id="notifyAllTechsOnTechTakeOver" class="onoff-checkbox" [(ngModel)]="model.notifications.notifyAllTechsOnTechTakeOver" />
+                <label class="onoff-label" for="notifyAllTechsOnTechTakeOver"></label>
+              </div>
+              <label for="notifyAllTechsOnTechTakeOver" title="Notify ALL technicians in a category when another technician TAKES a ticket">Notifier TOUS les techniciens d'une catégorie lorsqu'un autre technicien PREND en charge un ticket</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.includeAttachmentsInOutgoing" value="false" />
+                <input type="checkbox" name="notifications.includeAttachmentsInOutgoing" value="true" id="includeAttachmentsInOutgoing" class="onoff-checkbox" [(ngModel)]="model.notifications.includeAttachmentsInOutgoing" />
+                <label class="onoff-label" for="includeAttachmentsInOutgoing"></label>
+              </div>
+              <label for="includeAttachmentsInOutgoing" title="Include attachments into outgoing notifications">Inclure les pièces attachées dans les notifications sortantes</label>
+            </div>
+
+            <div class="form-group">
+              <div class="onoff">
+                <input type="hidden" name="notifications.sendAutoLoginLinks" value="false" />
+                <input type="checkbox" name="notifications.sendAutoLoginLinks" value="true" id="sendAutoLoginLinks" class="onoff-checkbox" [(ngModel)]="model.notifications.sendAutoLoginLinks" />
+                <label class="onoff-label" for="sendAutoLoginLinks"></label>
+              </div>
+              <label for="sendAutoLoginLinks" title="Send 'autologin' links in email notifications">Envoyer les liens 'auto-connexion' dans les e-mails de notification</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="model.notifications.enabled">
+        <div class="card-header">
+          <h3>Paramètres d'e-mails sortants</h3>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="outgoingFrom">Adresse du champ "De" :</label></div>
+              <div class="col-sm-8"><input class="form-control" id="outgoingFrom" name="outgoing.from" [(ngModel)]="model.outgoing.from" /></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="outgoingFromName">Nom d'affichage du champ "De" :</label></div>
+              <div class="col-sm-8"><input class="form-control" id="outgoingFromName" name="outgoing.fromName" [(ngModel)]="model.outgoing.fromName" /></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="outgoingReplyTo">Adresse du champ "Répondre à" :</label></div>
+              <div class="col-sm-8"><input class="form-control" id="outgoingReplyTo" name="outgoing.replyTo" [(ngModel)]="model.outgoing.replyTo" /></div>
+            </div>
+          </div>
+
+          <h3 class="card-subtitle">Paramètres du serveur SMTP</h3>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="smtpServerAddress">Adresse du serveur SMTP (ex. smtp.serveur.com) :</label></div>
+              <div class="col-sm-8"><input class="form-control" id="smtpServerAddress" name="smtp.serverAddress" [(ngModel)]="model.smtp.serverAddress" /></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="smtpServerPort">Numéro de port du serveur SMTP (ex. "25") :</label></div>
+              <div class="col-sm-8">
+                <input class="form-control" id="smtpServerPort" name="smtp.serverPort" [(ngModel)]="model.smtp.serverPort" value="25" />
+                <div class="onoff">
+                  <input type="hidden" name="smtp.requiresAuth" value="false" />
+                  <input type="checkbox" name="smtp.requiresAuth" value="true" id="smtpServerRequiresAuth" class="onoff-checkbox" [(ngModel)]="model.smtp.requiresAuth" />
+                  <label class="onoff-label" for="smtpServerRequiresAuth"></label>
+                </div>
+                <label for="smtpServerRequiresAuth" title="SMTP server requires authentication">Le serveur SMTP exige l'authentification</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="smtpUserName">Nom d'utilisateur SMTP :</label></div>
+              <div class="col-sm-8"><input class="form-control" id="smtpUserName" name="smtp.userName" [(ngModel)]="model.smtp.userName" /></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-4"><label for="smtpPassword">Mot de passe SMTP :</label></div>
+              <div class="col-sm-8">
+                <input class="form-control" type="password" id="smtpPassword" name="smtp.password" [(ngModel)]="model.smtp.password" />
+                <div class="form-group">
+                  <div class="onoff">
+                    <input type="hidden" name="smtp.useSsl" value="false" />
+                    <input type="checkbox" name="smtp.useSsl" value="true" id="smtpUseSsl" class="onoff-checkbox" [(ngModel)]="model.smtp.useSsl" />
+                    <label class="onoff-label" for="smtpUseSsl"></label>
+                  </div>
+                  <label for="smtpUseSsl" title="Use SSL/TLS to connect to the SMTP server">Utiliser SSL/TLS pour se connecter au serveur SMTP</label>
+                </div>
+                <button class="btn btn-sm" role="button" (click)="testSmtp()">Tester les paramètres SMTP...</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="errors||message">
+            <div *ngIf="message" class="small alert alert-success" role="alert">{{message}}</div>
+            <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h3>Modèles d'e-mails</h3></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <h4 title="'New ticket' email template">Modèle &laquo;Nouveau ticket&raquo;</h4>
+                <span class="grey" title="Sent to technicians when a new ticket arrives. All technicians that have permissions to the category get one of these.">Envoyé aux techniciens lorsqu'un nouveau ticket est créé. Tous les techniciens concernés par la catégorie recevront une copie de ce message.</span>
+              </div>
+              <div class="form-group grey">
+                <label for="templatesNewTicketSubject">Objet :</label>
+                <input type="text" name="templates.newTicket.subject" id="templatesNewTicketSubject" class="form-control" [(ngModel)]="model.templates.newTicket.subject" />
+              </div>
+              <div class="form-group grey">
+                <label for="templatesNewTicketBody">Message :</label>
+                <textarea type="text" name="templates.newTicket.body" id="templatesNewTicketBody" class="form-control" [(ngModel)]="model.templates.newTicket.body" rows="8"></textarea>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h4 title="'Ticket-updated' email template">Modèle &laquo;Ticket mis à jour&raquo;</h4>
+                <span class="grey" title="Sent to both technicians and ticket-submitter (and all ticket-subscribers if any) when a new reply is added to the ticket">Envoyé à la fois aux techniciens et à la personne qui a créé le ticket (ainsi qu'à tous les souscripteurs) lorsqu'une réponse est ajoutée au ticket.</span>
+              </div>
+              <div class="form-group grey">
+                <label for="templatesTicketUpdatedSubject">Objet :</label>
+                <input type="text" name="templates.ticketUpdated.subject" id="templatesTicketUpdatedSubject" class="form-control" [(ngModel)]="model.templates.ticketUpdated.subject" />
+              </div>
+              <div class="form-group grey">
+                <label for="templatesTicketUpdatedBody">Message :</label>
+                <textarea type="text" name="templates.ticketUpdated.body" id="templatesTicketUpdatedBody" class="form-control" [(ngModel)]="model.templates.ticketUpdated.body" rows="8"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <h4 title="'Ticket closed' email template">Modèle &laquo;Ticket fermé&raquo;</h4>
+                <span class="grey" title="Sent to subscribers when a ticket is closed. Note that 'Ticket closed notifications' setting has to be on.">Envoyé aux souscripteurs lorsqu'un ticket est fermé. Notez bien que l'option "Notifications 'Ticket fermé'" doit être activée.</span>
+              </div>
+              <div class="form-group grey">
+                <label for="templatesTicketClosedSubject">Objet :</label>
+                <input type="text" name="templates.ticketClosed.subject" id="templatesTicketClosedSubject" class="form-control" [(ngModel)]="model.templates.ticketClosed.subject" />
+              </div>
+              <div class="form-group grey">
+                <label for="templatesTicketClosedBody">Message :</label>
+                <textarea type="text" name="templates.ticketClosed.body" id="templatesTicketClosedBody" class="form-control" [(ngModel)]="model.templates.ticketClosed.body" rows="8"></textarea>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <h4 title="'Ticket confirmation' email template">Modèle &laquo;Confirmation de ticket&raquo;</h4>
+                <span class="grey" title="Sent to the ticket-submitter after the app received his ticket.">Envoyé au soumissionnaire du ticket après que l'application ait reçu son ticket.</span>
+              </div>
+              <div class="form-group grey">
+                <label for="templatesTicketConfirmationSubject">Objet :</label>
+                <input type="text" name="templates.ticketConfirmation.subject" id="templatesTicketConfirmationSubject" class="form-control" [(ngModel)]="model.templates.ticketConfirmation.subject" />
+              </div>
+              <div class="form-group grey">
+                <label for="templatesTicketConfirmationBody">Message :</label>
+                <textarea type="text" name="templates.ticketConfirmation.body" id="templatesTicketConfirmationBody" class="form-control" [(ngModel)]="model.templates.ticketConfirmation.body" rows="8"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h4 title="'Welcome to Helpdesk Core' email template">Modèle &laquo;Bienvenue dans Helpdesk Core&raquo;</h4>
+            <span class="grey" title="Sent to new users when they register a new account.">Envoyé aux nouveaux utilisateurs après la création de leur nouveau compte.</span>
+          </div>
+          <div class="form-group grey">
+            <label for="templatesWelcomeSubject">Objet :</label>
+            <input type="text" name="templates.welcome.subject" id="templatesWelcomeSubject" class="form-control" [(ngModel)]="model.templates.welcome.subject" />
+          </div>
+          <div class="form-group grey">
+            <label for="templatesWelcomeBody">Message :</label>
+            <textarea type="text" name="templates.welcome.body" id="templatesWelcomeBody" class="form-control" [(ngModel)]="model.templates.welcome.body" rows="8"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="errors" class="alert alert-danger form-group" role="alert">{{errors}}</div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-primary" [disabled]="f.invalid || isRequesting">Enregistrer les paramètres</button>
+        <a class="btn btn-sm" href="#" role="button" routerLink="/dashboard/home"><i class="fa fa-cog icon"></i> Annuler</a>
+        <app-spinner [isRunning]="isRequesting"></app-spinner>
+      </div>
+    </form>
+  </div>
+</div>

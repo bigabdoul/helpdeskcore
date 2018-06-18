@@ -1,0 +1,14 @@
+<app-header></app-header>
+<p-growl [(value)]="messages" life="5000"></p-growl>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+<div class="col-sm-9 ml-sm-auto col-md-10 pt-3" *ngIf="log?.length">
+  <div class="notifications shadowed-box">
+    <div *ngFor="let m of log" class="alert alert-{{m.severity}} alert-dismissible fade show">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
+      <h3 *ngIf="m.summary">{{m.summary}}</h3>
+      <p *ngIf="m.detail">{{m.detail}}</p>
+    </div>
+  </div>
+</div>

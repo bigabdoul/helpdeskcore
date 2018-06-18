@@ -1,0 +1,15 @@
+<div class="pagination">
+  <div class="countcontrols pagenav dark">
+    <span class="countdisplay" *ngIf="totalCount>0">{{ getMin() }} - {{ getMax() }} sur {{ totalCount }} | Page {{page}} / {{totalPages()}}</span>
+    <span class="pagenavbuttons">
+      <button class="button firstpage{{disabled('first')}}" title="Première page" (click)="onFirst()" [disabled]="page === 1 || loading"><span class="inner">|&lt;</span></button>
+      <button class="button prevpage{{disabled('prev')}}" title="Page précédente" (click)="onPrev()" [disabled]="page === 1 || loading"><span class="inner">&lt;</span></button>
+      <button class="button nextpage{{disabled('next')}}" title="Page suivante" (click)="onNext()" [disabled]="lastPage() || loading"><span class="inner">&gt;</span></button>
+      <button class="button lastpage{{disabled('last')}}" title="Dernière page" (click)="onLast()" [disabled]="lastPage() || loading"><span class="inner">&gt;|</span></button>
+    </span>
+  </div>
+  <div class="input-group" *ngIf="searchEnabled">
+    <input class="form-control" placeholder="Chercher..." (keypress)="onSearch(search, $event)" #search>
+    <button class="input-group-addon" (click)="onSearch(search)"><i class="fa fa-search icon"></i></button>
+  </div>
+</div>

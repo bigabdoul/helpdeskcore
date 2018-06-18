@@ -1,0 +1,107 @@
+a.btn-info, a.btn-info:visited {
+  color: #fff;
+}
+
+.ticket-summary, .ticket-summary td {
+  font-size: 95%;
+}
+
+.ticket-summary td, .ticket-summary th {
+  border-top: none;
+}
+
+.ticket-summary td:first-child {
+  color: #666;
+  font-size: 90%;
+}
+
+.ticket-summary table {
+  margin-bottom: 0;
+}
+
+.ticket-summary .card-body {
+  padding: 0;
+}
+
+.comments {
+  padding-left: 45px;
+}
+
+.comments .author-avatar {
+  float: left;
+  margin-left: -50px;
+  position: relative;
+}
+
+.comment .card-header {
+  border-bottom: none;
+}
+
+.comment .card-header, .comment .card-body {
+  padding: .5rem;
+}
+
+.comment .card-header {
+  padding-top: 0;
+}
+
+.sys {
+  background: #edeced;
+}
+
+.date {
+  color: gray;
+  font-size: 85%;
+  font-style: italic;
+}
+
+.comment > .date {
+  font-size: 12px;
+}
+
+#txtNewComment {
+  margin-top: 30px;
+  padding-left: 33px;
+  height: 44px;
+  font-size: 18px;
+  width: 100%;
+  background: #fff url(/assets/reply.png) 10px no-repeat;
+  background-size: 17px;
+  border-radius: 4px;
+  border-color: #ddd;
+}
+
+.card {
+  margin-bottom: 1em;
+}
+
+.comment .card {
+  margin-bottom: 0;
+}
+
+.card + span {
+  display: block;
+  margin-top: .2em;
+  margin-bottom: 1em;
+}
+
+.card-header h3 {
+  font-size: 100%;
+  text-transform: uppercase;
+}
+
+.card-header p {
+  margin-bottom: 0;
+}
+
+.card-body h2 {
+  font-size: 1.2rem;
+}
+
+img.wrench {
+  width: 24px;
+  position: absolute;
+  top: 15px;
+  left: 17px;
+  margin-bottom: -8px;
+}

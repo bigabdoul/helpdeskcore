@@ -1,0 +1,23 @@
+<form class="shadowed-box" #f="ngForm" novalidate (ngSubmit)="update(f)">
+  <div class="form-group">
+    <label for="body" class="sr-only">Réponse au ticket</label>
+    <textarea class="form-control" id="body" placeholder="Votre réponse au ticket" name="body" rows="5"  [(ngModel)]="model.body" required></textarea>
+  </div>
+  <div class="form-group">
+    <div class="onoff">
+      <input type="hidden" name="forTechsOnly" value="false" />
+      <input class="onoff-checkbox" type="checkbox" value="true" id="forTechsOnly" name="forTechsOnly"  [(ngModel)]="model.forTechsOnly" />
+      <label class="onoff-label" for="forTechsOnly"></label>
+    </div>
+    <label for="forTechsOnly">Pour les techniciens seulement</label>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Enregistrer</button>
+    <button class="btn btn-danger">Supprimer</button>
+    <a class="btn btn-sm" href="#" role="button" routerLink="/tickets/view/{{model.issueId}}">Annuler</a>
+    <app-spinner [isRunning]="isRequesting"></app-spinner>
+  </div>
+
+  <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
+</form>

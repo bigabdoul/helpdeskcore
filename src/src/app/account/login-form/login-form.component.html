@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6 new-user-alert">
+      	<div *ngIf="brandNew" class="alert alert-success" role="alert">
+            <strong>Vous y êtes presque !</strong> Veuillez vous connecter à votre compte
+        </div>  
+        <h2>Connexion</h2>        
+    </div>
+</div>
+  
+  <div class="row">
+    <div class="col-md-6">
+        <form #f="ngForm" novalidate (ngSubmit)="login(f)">
+            
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input id="email" type="text" required name="email" class="form-control" placeholder="Votre adresse e-mail" [ngModel]="credentials.email" #email="ngModel" tmFocus validateEmail>
+              <small [hidden]="email.valid || (email.pristine && !submitted)" class="text-danger" title="Please enter a valid email">Veuillez entrer une adresse e-mail valide</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input type="password" class="form-control" id="password" required name="password" placeholder="Votre mot de passe ici" ngModel>
+            </div>          
+  
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Se connecter</button>
+                <app-spinner [isRunning]="isRequesting"></app-spinner> 
+            </div>
+  
+            <div *ngIf="errors" class="alert alert-danger" role="alert">
+                <strong>Erreur !</strong> {{errors}}
+              </div> 
+            
+          </form>
+     </div>
+  </div>
+  
+  

@@ -1,0 +1,60 @@
+<div class="page-header clearfix">
+  <div class="radiobox">
+    <input type="radio" name="filter" (click)="applyFilter(1)" id="filterAll" value="1" checked [disabled]="isRequesting"><label for="filterAll">Tous</label>
+    <input type="radio" name="filter" (click)="applyFilter(5)" id="filterRegularOnly" value="5" [disabled]="isRequesting"><label for="filterRegularOnly">Utilisateurs</label>
+    <input type="radio" name="filter" (click)="applyFilter(2)" id="filterTechsOnly" value="2" [disabled]="isRequesting"><label for="filterTechsOnly">Techniciens</label>
+    <input type="radio" name="filter" (click)="applyFilter(3)" id="filterAdminsOnly" value="3" [disabled]="isRequesting"><label for="filterAdminsOnly">Admins</label>
+    <input type="radio" name="filter" (click)="applyFilter(4)" id="filterDisabled" value="4" [disabled]="isRequesting"><label for="filterDisabled">Utilisateurs désactivés</label>
+    <input type="radio" name="filter" (click)="applyFilter(6)" id="filterManagers" value="6" [disabled]="isRequesting"><label for="filterManagers">Managers</label>
+  </div>
+  <div class="float-right">
+    <a href="#" routerLink="/admin/create/user" class="btn btn-sm btn-primary" title="Créer un nouvel utilisateur"><i class="fa fa-user icon"></i><i class="fa fa-plus icon"></i> Nouveau...</a>
+    &nbsp;|&nbsp;
+    <a href="#" routerLink="/admin/categories" class="btn btn-sm btn-info"><i class="fa fa-list icon"></i> Catégories</a>
+    &nbsp;|&nbsp;
+    <span>
+      <input type="file" name="fileData" id="fileData" class="inputfile" #fupload (change)="fileChanged($event.target.files)" />
+      <label for="fileData" class="btn btn-sm"><i class="fa fa-upload icon"></i> CSV</label>
+    </span>
+  </div>
+</div>
+<div *ngIf="errors" class="alert alert-danger form-group" role="alert">{{errors}}</div>
+<div class="scrollv shadowed-box">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th><a href="javascript:;" (click)="sortCol(1)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(1)"></i> Nom d'utilisateur</a></th>
+        <th><a href="javascript:;" (click)="sortCol(2)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(2)"></i> Prénom</a></th>
+        <th><a href="javascript:;" (click)="sortCol(3)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(3)"></i> Nom</a></th>
+        <th><a href="javascript:;" (click)="sortCol(5)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(5)"></i> Dernière activité</a></th>
+        <th><a href="javascript:;" (click)="sortCol(6)" title="Notifications e-mail"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(6)"></i> <i class="fa fa-envelope icon"></i></a></th>
+        <th><a href="javascript:;" (click)="sortCol(7)" title="2 Factor Auth"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(7)"></i> <i class="fa fa-key icon"></i></a></th>
+        <th><a href="javascript:;" (click)="sortCol(8)" title="Désactivé"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(8)"></i> <i class="fa fa-lock icon"></i></a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of items">
+        <td><a href="#" routerLink="/user/edit/{{u.id}}"><i class="fa fa-edit icon"></i></a></td>
+        <td>
+          <h3><a href="#" routerLink="/user/view/{{u.id}}"><i class="fa fa-user icon"></i> {{u.userName}}</a></h3>
+          <span class="grey" *ngIf="u.email!==u.userName">{{u.email}}</span>
+        </td>
+        <td>{{u.firstName}}</td>
+        <td>{{u.lastName}}</td>
+        <td>{{u.lastSeen}}</td>
+        <td>{{u.sendEmail?'Oui':'Non'}}</td>
+        <td>{{u.twoFactor?'Oui':'Non'}}</td>
+        <td>{{u.disabled?'Oui':'Non'}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="8">
+          <app-pagination (goFirst)="fetchFirst()" (goPrev)="fetchPrev()" (goNext)="fetchNext()" (goLast)="fetchLast()" [page]="page" [pageSize]="pageSize" [totalCount]="totalCount" [loading]="isRequesting" [searchEnabled]="true" (search)="search($event)"></app-pagination>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<app-spinner [isRunning]="isRequesting"></app-spinner>

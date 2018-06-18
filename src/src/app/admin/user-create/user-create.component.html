@@ -1,0 +1,44 @@
+<div class="card shadowed-box">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3 class="page-header">Créer un nouvel utilisateur</h3>
+        <form #f="ngForm" (ngSubmit)="create(f)" novalidate>
+          <div class="form-group">
+            <label for="first-name" title="First name">Prénom</label>
+            <input type="text" class="form-control" id="first-name" placeholder="Prénoms" name="firstName" tmFocus ngModel>
+          </div>
+          <div class="form-group">
+            <label for="last-name" title="Last name">Patronyme</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Nom de famille" name="lastName" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input id="email" type="text" name="email" class="form-control" placeholder="Adresse e-mail" autocomplete="off" ngModel validateEmail required #email="ngModel">
+            <small [hidden]="email.valid || (email.pristine && !submitted)" class="text-danger" title="Please enter a valid email">Veuillez spécifier une adresse e-mail valide.</small>
+          </div>
+          <div class="form-group">
+            <label for="password" title="Password for user">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe du compte" autocomplete="off" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="location" title="User's location">Lieu :</label>
+            <input type="text" class="form-control" id="location" placeholder="Lieu de travail" name="location" ngModel required>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-primary" [disabled]="f.invalid || isRequesting">
+              <i class="fa fa-user"></i><i class="fa fa-plus"></i> Créer et continuer
+            </button>
+            <a href="#" routerLink="/admin/users" class="btn btn-sm">Annuler</a>
+            <app-spinner [isRunning]="isRequesting"></app-spinner>
+          </div>
+
+          <div *ngIf="errors" class="alert alert-danger" role="alert">
+            <strong>Erreur !</strong> {{errors}}
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div></div>

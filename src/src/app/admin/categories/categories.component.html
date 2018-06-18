@@ -1,0 +1,25 @@
+<div class="page-header clearfix">
+  <h3 class="float-left">Catégories de ticket</h3>
+  <a href="#" routerLink="/admin/users" class="btn btn-sm float-right"><i class="fa fa-user icon"></i> Utilisateurs</a>
+</div>
+<div class="scrollv shadowed-box">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><a href="javascript:;" (click)="sortCol(1)"><i class="fa fa-chevron-{{upDown}}" *ngIf="sorted(1)"></i> Catégorie</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of items">
+        <td><a href="#" routerLink="/admin/edit/category/{{c.id}}">{{c.name}}</a></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <app-pagination (goFirst)="fetchFirst()" (goPrev)="fetchPrev()" (goNext)="fetchNext()" (goLast)="fetchLast()" [page]="page" [pageSize]="pageSize" [totalCount]="totalCount" [loading]="isRequesting" [searchEnabled]="true" (search)="search($event)"></app-pagination>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
