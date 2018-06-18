@@ -52,7 +52,7 @@
     <!--https://github.com/aspnet/EntityFrameworkCore/issues/8996-->
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CoreTools\CoreTools.csproj" />
+    <ProjectReference Include="..\..\coretools\CoreTools.csproj" />
     <ProjectReference Include="..\..\efcore-repository\CoreRepository.csproj" />
     <ProjectReference Include="..\..\mailkit-tools\Mailkit-Tools.DependencyInjection\MailkitTools.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\mailkit-tools\MailkitTools.csproj" />
