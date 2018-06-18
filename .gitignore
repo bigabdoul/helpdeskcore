@@ -43,9 +43,9 @@ TestResult.xml
 dlldata.c
 
 # .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
+src/project.lock.json
+src/project.fragment.lock.json
+src/artifacts/
 # **/Properties/launchSettings.json
 
 *_i.c
@@ -329,3 +329,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
+**/.gitignore
