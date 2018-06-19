@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HelpDeskCore.Data.Entities;
 using HelpDeskCore.Shared.Logging;
 using Microsoft.EntityFrameworkCore;
+using static HelpDeskCore.Resources.Strings;
 
 namespace HelpDeskCore.Data.Extensions
 {
@@ -21,11 +22,11 @@ namespace HelpDeskCore.Data.Extensions
 
         public static string Serialize(this Issue issue)
         {
-            var sb = new StringBuilder($"Le ticket a été modifié,{NEWLN}{NEWLN}");
-            sb.AppendLine($"OBJET PRECEDENT{NEWLN}");
+            var sb = new StringBuilder(TicketUpdated + NEWLN + NEWLN);
+            sb.AppendLine(PreviousSubject + NEWLN);
             sb.AppendLine(issue.Subject);
             sb.AppendLine();
-            sb.AppendLine($"CONTENU PRECEDENT{NEWLN}");
+            sb.AppendLine(PreviousContent + NEWLN);
             sb.AppendLine(issue.Body);
             return sb.ToString();
         }
@@ -59,9 +60,7 @@ namespace HelpDeskCore.Data.Extensions
 
             // not very handsome but gets some results
             q = from e in q
-                where
-    e.Body.Contains(terms) | arr.Contains(e.Body) |
-    e.Subject.Contains(terms) | arr.Contains(e.Subject)
+                where e.Body.Contains(terms) | arr.Contains(e.Body) | e.Subject.Contains(terms) | arr.Contains(e.Subject)
                 select e;
             return q;
         }
@@ -303,13 +302,13 @@ namespace HelpDeskCore.Data.Extensions
 
             // not very handsome but gets some results
             q = from u in q
-                where
-    u.FirstName.Contains(terms) | arr.Contains(u.FirstName) |
-    u.LastName.Contains(terms) | arr.Contains(u.LastName) |
-    u.UserName.Contains(terms) | arr.Contains(u.UserName) |
-    u.Email.Contains(terms) | arr.Contains(u.Email) |
-    //u.Notes.Contains(terms) | arr.Contains(u.Notes) |
-    u.PhoneNumber.Contains(terms) | arr.Contains(u.PhoneNumber)
+                where 
+                u.FirstName.Contains(terms) | arr.Contains(u.FirstName) |
+                u.LastName.Contains(terms) | arr.Contains(u.LastName) |
+                u.UserName.Contains(terms) | arr.Contains(u.UserName) |
+                u.Email.Contains(terms) | arr.Contains(u.Email) |
+                //u.Notes.Contains(terms) | arr.Contains(u.Notes) |
+                u.PhoneNumber.Contains(terms) | arr.Contains(u.PhoneNumber)
                 select u;
             return q;
         }
@@ -351,7 +350,7 @@ namespace HelpDeskCore.Data.Extensions
         }
 
         public static string UserType(this AppUser u)
-          => u.IsAdministrator ? "Administrateur" : (u.IsTech ? "Technicien" : "Utilisateur");
+          => u.IsAdministrator ? Administrator : (u.IsTech ? Technician : User);
 
         public static string UserRole(this AppUser u)
           => u.IsAdministrator ? "admin" : (u.IsTech ? "tech" : "user");
@@ -571,7 +570,7 @@ namespace HelpDeskCore.Data.Extensions
         public static async Task<Employee> FindEmployeeAsync(this IQueryable<Employee> query, string userId)
           => await query.Include(e => e.User).Where(e => e.UserId == userId).SingleOrDefaultAsync();
 
-        public static IQueryable<Issue> QueryIssues(this ApplicationDbContext context, string userId = null, int? id = null, bool withIncludes = true) 
+        public static IQueryable<Issue> QueryIssues(this ApplicationDbContext context, string userId = null, int? id = null, bool withIncludes = true)
             => context.Issues.QueryIssues(userId, id, withIncludes);
 
         public static IQueryable<Issue> QueryIssues(this IQueryable<Issue> query, string userId = null, int? id = null, bool withIncludes = true)
@@ -682,11 +681,12 @@ namespace HelpDeskCore.Data.Extensions
         public static IQueryable<Category> Search(this IQueryable<Category> query, string searchTerms)
         {
             var arr = searchTerms.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            query = from q in query where
-                    q.FromAddress.Contains(searchTerms) | arr.Contains(q.FromAddress) |
-                    q.FromName.Contains(searchTerms) | arr.Contains(q.FromName) |
-                    q.Name.Contains(searchTerms) | arr.Contains(q.Name) |
-                    q.Notes.Contains(searchTerms) | arr.Contains(q.Notes)
+            query = from q in query
+                    where
+    q.FromAddress.Contains(searchTerms) | arr.Contains(q.FromAddress) |
+    q.FromName.Contains(searchTerms) | arr.Contains(q.FromName) |
+    q.Name.Contains(searchTerms) | arr.Contains(q.Name) |
+    q.Notes.Contains(searchTerms) | arr.Contains(q.Notes)
                     select q;
 
             return query;
@@ -704,28 +704,21 @@ namespace HelpDeskCore.Data.Extensions
                     {
                         items = new List<Category>
                         {
-                          new Category { Name = "Demande d'adresse IPv4 d'entreprise" },
-                          new Category { Name = "Énergie verte" },
-                          new Category { Name = "Énergie verte / P C M M" },
-                          new Category { Name = "Énergie verte / Problème général d'énergie verte" },
-                          new Category { Name = "Feedback" },
-                          new Category { Name = "MSS-3" },
-                          new Category { Name = "MSS-3 / Accès VPN" },
-                          new Category { Name = "MSS-3 / Demande de changement de pare-feu" },
-                          new Category { Name = "MSS-3 / Problème général MSS-3" },
-                          new Category { Name = "OneICTbox" },
-                          new Category { Name = "OneICTbox / Demande de changement de pare-feu" },
-                          new Category { Name = "OneICTbox / Problème d'accès à Internet" },
-                          new Category { Name = "OneICTbox / Problème de CCTV" },
-                          new Category { Name = "OneICTbox / Problème général OneICTbox" },
-                          new Category { Name = "OneICTbox Routage et pare-feu" },
-                          new Category { Name = "Problèmes ELFIQ LLB" },
-                          new Category { Name = "Problème lié à la téléphonie IP" },
-                          new Category { Name = "Problème lié à la téléphonie IP / Ajout de nouvel utilisateur de téléphone" },
-                          new Category { Name = "Problème de VSAT" },
-                          new Category { Name = "Renseignements Généraux" },
-                          new Category { Name = "Renseignements généraux / Demande d'approvisionnement" },
-                          new Category { Name = "Urgence / Désastre / Crise" },
+                            new Category { Name = CategoryGeneralIssue },
+                            new Category { Name = CategoryGeneralInquiry },
+                            new Category { Name = CategoryGeneralInquirySupplyRequest },
+                            new Category { Name = CategoryIPv4CompanyAddress },
+                            new Category { Name = CategoryFeedback },
+                            new Category { Name = CategoryVpnAccess },
+                            new Category { Name = CategoryVsatIssue },
+                            new Category { Name = CategoryInternetAccess },
+                            new Category { Name = CategoryFirewallChangeRequest },
+                            new Category { Name = CategoryRouterFirewall },
+                            new Category { Name = CategoryCctvIssue },
+                            new Category { Name = CategoryElfiqLlbIssue },
+                            new Category { Name = CategoryIpPhoneIssue },
+                            new Category { Name = CategoryIpPhoneIssueNewUser },
+                            new Category { Name = CategoryEmergency },
                         };
                         context.Categories.AddRange(items);
                         context.SaveChanges();
@@ -757,11 +750,11 @@ namespace HelpDeskCore.Data.Extensions
                     {
                         items = new List<Section>
                         {
-                          new Section { Name = "Comptabilité" },
-                          new Section { Name = "Direction" },
-                          new Section { Name = "Informatique" },
-                          new Section { Name = "Logistique" },
-                          new Section { Name = "Secrétariat" },
+                          new Section { Name = SectionAccounting },
+                          new Section { Name = SectionManagement },
+                          new Section { Name = SectionIT },
+                          new Section { Name = SectionLogistics },
+                          new Section { Name = SectionSecretariat },
                         };
                         context.Sections.AddRange(items);
                         context.SaveChanges();
@@ -786,10 +779,10 @@ namespace HelpDeskCore.Data.Extensions
                     {
                         items = new List<Status>
                         {
-                          new Status { Name = "Supprimé", ForTechsOnly = true },
-                          new Status { Name = "Nouveau", ForTechsOnly = true },
-                          new Status { Name = "En cours", ForTechsOnly = true },
-                          new Status { Name = "Résolu", ForTechsOnly = true },
+                          new Status { Name = StatusDeleted, ForTechsOnly = true },
+                          new Status { Name = StatusNew, ForTechsOnly = true },
+                          new Status { Name = StatusInProgress, ForTechsOnly = true },
+                          new Status { Name = StatusClosed, ForTechsOnly = true },
                         };
                         context.Statuses.AddRange(items);
                         context.SaveChanges();

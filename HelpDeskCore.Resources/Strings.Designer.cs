@@ -61,6 +61,15 @@ namespace HelpDeskCore.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrateur.
+        /// </summary>
+        public static string Administrator {
+            get {
+                return ResourceManager.GetString("Administrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nom d&apos;utilisateur et/ou mot de passe incorrect ou compte désactivé..
         /// </summary>
         public static string BadLoginAttempt {
@@ -79,6 +88,141 @@ namespace HelpDeskCore.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Problème de CCTV.
+        /// </summary>
+        public static string CategoryCctvIssue {
+            get {
+                return ResourceManager.GetString("CategoryCctvIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problèmes ELFIQ LLB.
+        /// </summary>
+        public static string CategoryElfiqLlbIssue {
+            get {
+                return ResourceManager.GetString("CategoryElfiqLlbIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urgence / Désastre / Crise.
+        /// </summary>
+        public static string CategoryEmergency {
+            get {
+                return ResourceManager.GetString("CategoryEmergency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feedback.
+        /// </summary>
+        public static string CategoryFeedback {
+            get {
+                return ResourceManager.GetString("CategoryFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande de changement de pare-feu.
+        /// </summary>
+        public static string CategoryFirewallChangeRequest {
+            get {
+                return ResourceManager.GetString("CategoryFirewallChangeRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renseignements Généraux.
+        /// </summary>
+        public static string CategoryGeneralInquiry {
+            get {
+                return ResourceManager.GetString("CategoryGeneralInquiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renseignements généraux / Demande d&apos;approvisionnement.
+        /// </summary>
+        public static string CategoryGeneralInquirySupplyRequest {
+            get {
+                return ResourceManager.GetString("CategoryGeneralInquirySupplyRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problème général.
+        /// </summary>
+        public static string CategoryGeneralIssue {
+            get {
+                return ResourceManager.GetString("CategoryGeneralIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problème d&apos;accès à Internet.
+        /// </summary>
+        public static string CategoryInternetAccess {
+            get {
+                return ResourceManager.GetString("CategoryInternetAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problème lié à la téléphonie IP.
+        /// </summary>
+        public static string CategoryIpPhoneIssue {
+            get {
+                return ResourceManager.GetString("CategoryIpPhoneIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problème lié à la téléphonie IP / Ajout de nouvel utilisateur de téléphone.
+        /// </summary>
+        public static string CategoryIpPhoneIssueNewUser {
+            get {
+                return ResourceManager.GetString("CategoryIpPhoneIssueNewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demande d&apos;adresse IPv4 d&apos;entreprise.
+        /// </summary>
+        public static string CategoryIPv4CompanyAddress {
+            get {
+                return ResourceManager.GetString("CategoryIPv4CompanyAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Routage et pare-feu.
+        /// </summary>
+        public static string CategoryRouterFirewall {
+            get {
+                return ResourceManager.GetString("CategoryRouterFirewall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accès VPN.
+        /// </summary>
+        public static string CategoryVpnAccess {
+            get {
+                return ResourceManager.GetString("CategoryVpnAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problème de VSAT.
+        /// </summary>
+        public static string CategoryVsatIssue {
+            get {
+                return ResourceManager.GetString("CategoryVsatIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token Facebook invalide..
         /// </summary>
         public static string ExternalAuthInvalidFacebookToken {
@@ -93,6 +237,69 @@ namespace HelpDeskCore.Resources {
         public static string ExternalAuthLocalAccountCreationFailed {
             get {
                 return ResourceManager.GetString("ExternalAuthLocalAccountCreationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CONTENU PRECEDENT.
+        /// </summary>
+        public static string PreviousContent {
+            get {
+                return ResourceManager.GetString("PreviousContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OBJET PRECEDENT.
+        /// </summary>
+        public static string PreviousSubject {
+            get {
+                return ResourceManager.GetString("PreviousSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comptabilité.
+        /// </summary>
+        public static string SectionAccounting {
+            get {
+                return ResourceManager.GetString("SectionAccounting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informatique.
+        /// </summary>
+        public static string SectionIT {
+            get {
+                return ResourceManager.GetString("SectionIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logistique.
+        /// </summary>
+        public static string SectionLogistics {
+            get {
+                return ResourceManager.GetString("SectionLogistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direction.
+        /// </summary>
+        public static string SectionManagement {
+            get {
+                return ResourceManager.GetString("SectionManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secrétariat.
+        /// </summary>
+        public static string SectionSecretariat {
+            get {
+                return ResourceManager.GetString("SectionSecretariat", resourceCulture);
             }
         }
         
@@ -120,6 +327,42 @@ namespace HelpDeskCore.Resources {
         public static string SmtpServerRequiresAuth {
             get {
                 return ResourceManager.GetString("SmtpServerRequiresAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Résolu.
+        /// </summary>
+        public static string StatusClosed {
+            get {
+                return ResourceManager.GetString("StatusClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimé.
+        /// </summary>
+        public static string StatusDeleted {
+            get {
+                return ResourceManager.GetString("StatusDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En cours.
+        /// </summary>
+        public static string StatusInProgress {
+            get {
+                return ResourceManager.GetString("StatusInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nouveau.
+        /// </summary>
+        public static string StatusNew {
+            get {
+                return ResourceManager.GetString("StatusNew", resourceCulture);
             }
         }
         
@@ -304,6 +547,15 @@ namespace HelpDeskCore.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Technicien.
+        /// </summary>
+        public static string Technician {
+            get {
+                return ResourceManager.GetString("Technician", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nouveau ticket créé.
         /// </summary>
         public static string TicketCreated {
@@ -417,6 +669,15 @@ namespace HelpDeskCore.Resources {
         public static string TicketUpdated {
             get {
                 return ResourceManager.GetString("TicketUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utilisateur.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
             }
         }
         

@@ -123,6 +123,51 @@
   <data name="CannotCommentIssue" xml:space="preserve">
     <value>You cannot add a comment to this issue.</value>
   </data>
+  <data name="CategoryCctvIssue" xml:space="preserve">
+    <value>CCTV issue</value>
+  </data>
+  <data name="CategoryElfiqLlbIssue" xml:space="preserve">
+    <value>ELFIQ LLB issue</value>
+  </data>
+  <data name="CategoryEmergency" xml:space="preserve">
+    <value>Emergency / Disaster / Crisis</value>
+  </data>
+  <data name="CategoryFeedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="CategoryFirewallChangeRequest" xml:space="preserve">
+    <value>Firewall change request</value>
+  </data>
+  <data name="CategoryGeneralInquiry" xml:space="preserve">
+    <value>General inquuiry</value>
+  </data>
+  <data name="CategoryGeneralInquirySupplyRequest" xml:space="preserve">
+    <value>General inquuiry / Request for supply</value>
+  </data>
+  <data name="CategoryGeneralIssue" xml:space="preserve">
+    <value>General issue</value>
+  </data>
+  <data name="CategoryInternetAccess" xml:space="preserve">
+    <value>Internet acces issue</value>
+  </data>
+  <data name="CategoryIpPhoneIssue" xml:space="preserve">
+    <value>Issue with IP telephony</value>
+  </data>
+  <data name="CategoryIpPhoneIssueNewUser" xml:space="preserve">
+    <value>Issue with IP telephony / Adding new phone user</value>
+  </data>
+  <data name="CategoryIPv4CompanyAddress" xml:space="preserve">
+    <value>Corporate IPv4 address request</value>
+  </data>
+  <data name="CategoryRouterFirewall" xml:space="preserve">
+    <value>Routing and firewall</value>
+  </data>
+  <data name="CategoryVpnAccess" xml:space="preserve">
+    <value>VPN acces</value>
+  </data>
+  <data name="CategoryVsatIssue" xml:space="preserve">
+    <value>VSAT issue</value>
+  </data>
   <data name="ExternalAuthInvalidFacebookToken" xml:space="preserve">
     <value>Invalid Facebook token.</value>
   </data>
@@ -239,5 +284,47 @@
   </data>
   <data name="WelcomeOnHelpDesk" xml:space="preserve">
     <value>Welcome on Help Desk</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="PreviousContent" xml:space="preserve">
+    <value>PREVIOUS CONTENT</value>
+  </data>
+  <data name="PreviousSubject" xml:space="preserve">
+    <value>PREVIOUS SUBJECT</value>
+  </data>
+  <data name="SectionAccounting" xml:space="preserve">
+    <value>Accounting</value>
+  </data>
+  <data name="SectionIT" xml:space="preserve">
+    <value>IT</value>
+  </data>
+  <data name="SectionLogistics" xml:space="preserve">
+    <value>Logistics</value>
+  </data>
+  <data name="SectionManagement" xml:space="preserve">
+    <value>Management</value>
+  </data>
+  <data name="SectionSecretariat" xml:space="preserve">
+    <value>Secretariat</value>
+  </data>
+  <data name="StatusClosed" xml:space="preserve">
+    <value>Resolved</value>
+  </data>
+  <data name="StatusDeleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="StatusInProgress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="StatusNew" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Technician" xml:space="preserve">
+    <value>Technician</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

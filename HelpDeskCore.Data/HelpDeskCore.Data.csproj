@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\efcore-repository\CoreRepository.csproj" />
+    <ProjectReference Include="..\HelpDeskCore.Resources\HelpDeskCore.Resources.csproj" />
     <ProjectReference Include="..\HelpDeskCore.Shared\HelpDeskCore.Shared.csproj" />
   </ItemGroup>
 
