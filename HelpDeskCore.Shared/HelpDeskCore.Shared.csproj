@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CoreTools\CoreTools.csproj" />
+    <ProjectReference Include="..\..\coretools\CoreTools.csproj" />
     <ProjectReference Include="..\HelpDeskCore.Resources\HelpDeskCore.Resources.csproj" />
   </ItemGroup>
 
