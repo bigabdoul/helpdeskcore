@@ -1,6 +1,12 @@
 {
   "name": "helpdeskcore",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigabdoul/helpdeskcore.git"
+  },
+  "keywords": [ "help desk", "angular", "c#", "asp.net core", "rest", "web", "api" ],
+  "author": "Abdourahamane Kaba",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
