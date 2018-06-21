@@ -65,3 +65,10 @@ export interface OnlineUser {
   userId: string;
   userName: string;
 }
+
+export interface ChangePasswordModel {
+  userId: string;
+  oldPassword?: string;
+  newPassword: string;
+  confirmPassword: string;
+}

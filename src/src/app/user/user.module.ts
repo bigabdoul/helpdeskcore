@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { DialogModule } from 'primeng/primeng';
+
 import { SharedModule } from "@app/shared";
 import { AuthGuard } from "@app/auth.guard";
 import { DataService } from "@app/shared";
@@ -14,6 +16,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     CommonModule,
     FormsModule,
     SharedModule,
+    DialogModule,
     routing,
   ],
   declarations: [UserDetailComponent, EditUserComponent],

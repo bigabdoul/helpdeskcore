@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { DataService, DetailEditView, UserDetail, EntityListItem } from "@app/shared";
+import { DataService, DetailEditView, UserDetail, EntityListItem, ChangePasswordModel } from "@app/shared";
 
 @Component({
   selector: 'app-edit-user',
@@ -11,6 +11,8 @@ import { DataService, DetailEditView, UserDetail, EntityListItem } from "@app/sh
 export class EditUserComponent extends DetailEditView<UserDetail> {
 
   departments: EntityListItem[];
+  pwd: ChangePasswordModel;
+  changingPwd: boolean;
 
   constructor(route: ActivatedRoute, dataService: DataService, private router: Router) {
     super(route, dataService);
@@ -49,6 +51,25 @@ export class EditUserComponent extends DetailEditView<UserDetail> {
           this.router.navigate(['/dashboard/home']);
         }
       });
+    }
+  }
+
+  showChangePwd(event) {
+    event.preventDefault();
+    this.changingPwd = true;
+  }
+
+  changePassword({ value, valid }: { value: ChangePasswordModel, valid: boolean }) {
+    if (valid) {
+      value.userId = this.model.id;
+      this.dataService.post(value, 'changePassword')
+        .subscribe(res => {
+          if (res) {
+            this.changingPwd = false;
+            this.errors = '';
+          }
+        },
+        error => this.errors = error);
     }
   }
 

@@ -5,6 +5,7 @@ using AutoMapper;
 using HelpDeskCore.Data;
 using HelpDeskCore.Data.Entities;
 using HelpDeskCore.Data.Extensions;
+using HelpDeskCore.Helpers;
 using HelpDeskCore.Models;
 using HelpDeskCore.Services.Imports;
 using HelpDeskCore.Shared.Logging;
@@ -18,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using static HelpDeskCore.Data.Extensions.EntityExtensions;
+using static HelpDeskCore.Resources.Strings;
 
 namespace HelpDeskCore.Controllers
 {
@@ -44,6 +46,96 @@ namespace HelpDeskCore.Controllers
     }
 
     #region user management
+
+    [HttpPost("ChangePassword")]
+    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordModel model)
+    {
+      var emp = await FindEmployeeAsync(model.UserId);
+      if (emp?.User == null) return NotFound();
+
+      var target = emp.User;
+      var is_admin = await IsAdmin();
+      var is_builtin = await IsBuiltInAdmin();
+      var is_self = emp.UserId == GetUserId();
+      var hasPwd = await UserManager.HasPasswordAsync(target);
+      var oldPasswordHash = string.Empty;
+
+      if (hasPwd)
+        oldPasswordHash = target.PasswordHash;
+
+      if (!is_self)
+      {
+        // somebody's trying to update another user
+
+        if (!is_admin)
+        {
+          // a non-administrator cannot update another user
+          return BadRequest();
+        }
+
+        if (!is_builtin && target.IsAdministrator)
+        {
+          // only the built-in administrator can modify another admin
+          return BadRequest();
+        }
+
+        return await change_admin_pwd();
+      }
+      else if (is_admin || is_builtin)
+      {
+        return await change_admin_pwd();
+      }
+      else if (string.IsNullOrWhiteSpace(model.OldPassword))
+      {
+        return BadRequest(ModelState.AddError(string.Empty, ChangePasswordOldRequired));
+      }
+
+      // when simple users change their password
+      IdentityResult result;
+
+      if (hasPwd)
+        result = await UserManager.ChangePasswordAsync(target, model.OldPassword, model.NewPassword);
+      else
+        result = await UserManager.AddPasswordAsync(target, model.NewPassword);
+
+      if (result.Succeeded)
+      {
+        return await change_pwd_success();
+      }
+
+      return BadRequest(ModelState.AddError(string.Empty, ChangePasswordBadAttempt));
+
+      // when an admin changes a user's password, no need to specify the old one
+      async Task<IActionResult> change_admin_pwd()
+      {
+        IdentityResult res;
+        if (hasPwd)
+        {
+          target.PasswordHash = UserManager.PasswordHasher.HashPassword(target, model.NewPassword);
+          res= await UserManager.UpdateAsync(target);
+        }
+        else
+        {
+          res = await UserManager.AddPasswordAsync(target, model.NewPassword);
+        }
+
+        if (res.Succeeded)
+          return await change_pwd_success();
+
+        return BadRequest(ModelState.AddError(string.Empty, ChangePasswordFailed));
+      }
+
+      async Task<IActionResult> change_pwd_success()
+      {
+        var user = target;
+
+        if (!is_self)
+          user = await FindUserAsync();
+
+        await EventLogger.LogAsync(SysEventType.UserPasswordChanged, user, target, new { oldPasswordHash });
+        return Ok();
+      }
+    }
 
     // GET api/admin/users
     [HttpGet("users")]

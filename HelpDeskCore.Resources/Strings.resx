@@ -327,4 +327,16 @@
   <data name="User" xml:space="preserve">
     <value>Utilisateur</value>
   </data>
+  <data name="ChangePasswordBadAttempt" xml:space="preserve">
+    <value>Mot de passe incorrect.</value>
+  </data>
+  <data name="ChangePasswordFailed" xml:space="preserve">
+    <value>Impossible de changer le mot de passe pour l'utlisateur donné.</value>
+  </data>
+  <data name="ChangePasswordOldRequired" xml:space="preserve">
+    <value>Vous devez spécifier l'ancien mot de passe.</value>
+  </data>
+  <data name="SysEventUserPasswordChanged" xml:space="preserve">
+    <value>Mot de passe changé pour l'utilisateur {0}.</value>
+  </data>
 </root>

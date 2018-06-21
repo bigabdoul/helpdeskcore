@@ -223,6 +223,33 @@ namespace HelpDeskCore.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mot de passe incorrect..
+        /// </summary>
+        public static string ChangePasswordBadAttempt {
+            get {
+                return ResourceManager.GetString("ChangePasswordBadAttempt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impossible de changer le mot de passe pour l&apos;utlisateur donné..
+        /// </summary>
+        public static string ChangePasswordFailed {
+            get {
+                return ResourceManager.GetString("ChangePasswordFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez spécifier l&apos;ancien mot de passe..
+        /// </summary>
+        public static string ChangePasswordOldRequired {
+            get {
+                return ResourceManager.GetString("ChangePasswordOldRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Token Facebook invalide..
         /// </summary>
         public static string ExternalAuthInvalidFacebookToken {
@@ -525,6 +552,15 @@ namespace HelpDeskCore.Resources {
         public static string SysEventUserImported {
             get {
                 return ResourceManager.GetString("SysEventUserImported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mot de passe changé pour l&apos;utilisateur {0}..
+        /// </summary>
+        public static string SysEventUserPasswordChanged {
+            get {
+                return ResourceManager.GetString("SysEventUserPasswordChanged", resourceCulture);
             }
         }
         

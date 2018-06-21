@@ -19,6 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   log: Message[] = [];
   messages: Message[] = [];
   onlineUsers: OnlineUser[] = [];
+  changingPwd: boolean;
 
   constructor(private svc: UserService) {
   }

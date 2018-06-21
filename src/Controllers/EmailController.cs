@@ -56,19 +56,19 @@ namespace HelpDeskCore.Controllers
         await _emailClient.SendAsync(message);
         return Ok();
       }
-      catch(ServiceNotAuthenticatedException ex)
+      catch (ServiceNotAuthenticatedException ex)
       {
         if (false == config?.RequiresAuth)
           return BadRequest(new ServiceNotAuthenticatedException(SmtpServerRequiresAuth));
         return BadRequest(ex);
       }
-      catch(SslHandshakeException ex)
+      catch (SslHandshakeException ex)
       {
         if (true == config?.UseSsl)
           return BadRequest(new SslHandshakeException(SmtpServerDoesNotSupportSsl));
         return BadRequest(ex);
       }
-      catch(SocketException)
+      catch (SocketException)
       {
         return BadRequest(new Exception(string.Format(SmtpHostUnreachable, config?.Host)));
       }

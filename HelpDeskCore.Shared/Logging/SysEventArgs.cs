@@ -85,7 +85,8 @@ namespace HelpDeskCore.Shared.Logging
                 case SysEventType.UserRegistered:
                 case SysEventType.UserCreated:
                 case SysEventType.UserUpdated:
-                case SysEventType.UserDeleted: return SysEventCategory.User;
+                case SysEventType.UserDeleted:
+                case SysEventType.UserPasswordChanged: return SysEventCategory.User;
 
                 case SysEventType.CategoryCreated:
                 case SysEventType.CategoryUpdated:

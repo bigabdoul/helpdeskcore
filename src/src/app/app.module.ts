@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic/platform-browser-dynamic";
 
 import { AuthenticateXHRBackend } from '@app/authenticate-xhr.backend';
@@ -30,6 +31,7 @@ import { AlertService, ConfigService } from '@app/shared';
   imports: [
     AccountModule,
     AdminModule,
+    BrowserAnimationsModule,
     DashboardModule,
     TicketsModule,
     UserModule,

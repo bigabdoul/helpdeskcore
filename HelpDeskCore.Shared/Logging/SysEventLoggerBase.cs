@@ -114,6 +114,9 @@ namespace HelpDeskCore.Shared.Logging
                     case SysEventType.UserImported:
                         message = Format(SysEventUserImported, userName);
                         break;
+                    case SysEventType.UserPasswordChanged:
+                        message = Format(SysEventUserPasswordChanged, userName);
+                        break;
                     case SysEventType.CategoryCreated:
                         message = Format(SysEventCategoryCreated, dataName);
                         break;

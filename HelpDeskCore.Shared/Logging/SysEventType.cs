@@ -81,6 +81,11 @@ namespace HelpDeskCore.Shared.Logging
         UserImported,
 
         /// <summary>
+        /// User password was changed.
+        /// </summary>
+        UserPasswordChanged,
+
+        /// <summary>
         /// Category created by an admin.
         /// </summary>
         CategoryCreated,
