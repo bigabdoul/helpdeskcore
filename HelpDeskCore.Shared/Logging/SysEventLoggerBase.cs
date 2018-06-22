@@ -145,7 +145,7 @@ namespace HelpDeskCore.Shared.Logging
                 }
                 else if (message != null)
                 {
-                    await AddEventEntryAsync(type, message);
+                    await AddEventEntryAsync(type, message, state);
                 }
             }
             catch (Exception ex)
