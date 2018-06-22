@@ -11,7 +11,6 @@ import { DataService, DetailEditView, UserDetail, EntityListItem, ChangePassword
 export class EditUserComponent extends DetailEditView<UserDetail> {
 
   departments: EntityListItem[];
-  pwd: ChangePasswordModel;
   changingPwd: boolean;
 
   constructor(route: ActivatedRoute, dataService: DataService, private router: Router) {
