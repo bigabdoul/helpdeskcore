@@ -339,4 +339,10 @@
   <data name="SysEventUserPasswordChanged" xml:space="preserve">
     <value>Password changed for user {0}.</value>
   </data>
+  <data name="UserAccountDoesNotExistOrDisabled" xml:space="preserve">
+    <value>User account does not exist or is disabled.</value>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>Reset your password</value>
+  </data>
 </root>

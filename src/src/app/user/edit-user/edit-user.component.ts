@@ -57,19 +57,4 @@ export class EditUserComponent extends DetailEditView<UserDetail> {
     event.preventDefault();
     this.changingPwd = true;
   }
-
-  changePassword({ value, valid }: { value: ChangePasswordModel, valid: boolean }) {
-    if (valid) {
-      value.userId = this.model.id;
-      this.dataService.post(value, 'changePassword')
-        .subscribe(res => {
-          if (res) {
-            this.changingPwd = false;
-            this.errors = '';
-          }
-        },
-        error => this.errors = error);
-    }
-  }
-
 }

@@ -286,6 +286,15 @@ namespace HelpDeskCore.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Réinitialisation de votre mot de passe.
+        /// </summary>
+        public static string ResetYourPassword {
+            get {
+                return ResourceManager.GetString("ResetYourPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comptabilité.
         /// </summary>
         public static string SectionAccounting {
@@ -714,6 +723,15 @@ namespace HelpDeskCore.Resources {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compte d&apos;utilisateur inexistant ou désactivé..
+        /// </summary>
+        public static string UserAccountDoesNotExistOrDisabled {
+            get {
+                return ResourceManager.GetString("UserAccountDoesNotExistOrDisabled", resourceCulture);
             }
         }
         

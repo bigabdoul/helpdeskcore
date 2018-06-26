@@ -5,17 +5,20 @@
 
 import { NgModule }           from '@angular/core';
 import { CommonModule }       from '@angular/common';
- 
+import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/primeng';
+
 import { myFocus } from '@app/directives';
 import { AlertComponent } from './alert/alert.component';
 import {SpinnerComponent} from '@app/spinner/spinner.component';  
 import { PaginationComponent } from "@app/shared/pagination/pagination.component";
 import { ToolbarComponent } from "@app/shared/toolbar/toolbar.component";
+import { ChangePasswordComponent } from '@app/shared/components';
 
 @NgModule({
-  imports:      [CommonModule],
-  declarations: [myFocus, AlertComponent, SpinnerComponent, ToolbarComponent, PaginationComponent],
-  exports:      [myFocus, AlertComponent, SpinnerComponent, ToolbarComponent, PaginationComponent],
+  imports:      [CommonModule,DialogModule,FormsModule],
+  declarations: [myFocus, AlertComponent, SpinnerComponent, ToolbarComponent, PaginationComponent, ChangePasswordComponent],
+  exports: [myFocus, AlertComponent, SpinnerComponent, ToolbarComponent, PaginationComponent, ChangePasswordComponent],
   providers:    []
 })
 export class SharedModule { }

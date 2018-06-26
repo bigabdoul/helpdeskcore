@@ -177,35 +177,4 @@
   </div>
 </div>
 
-<p-dialog [(visible)]="changingPwd" modal="true" width="450" minWidth="300" responsive="true" closable="true">
-  <p-header>Changer le mot de passe</p-header>
-  <form #f="ngForm" (submit)="changePassword(f)" *ngIf="model" novalidate>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group"><label for="oldPassword">Mot de passe actuel</label></div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group"><input id="oldPassword" type="password" name="oldPassword" class="form-control" ngModel /></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group"><label for="newPassword">Nouveau mot de passe</label></div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group"><input id="newPassword" type="password" name="newPassword" class="form-control" ngModel /></div>
-      </div>
-    </div><div class="row">
-      <div class="col-sm-6">
-        <div class="form-group"><label for="confirmNewPassword">Confirmer le nouveau mot de passe</label></div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group"><input id="confirmNewPassword" type="password" name="confirmNewPassword" class="form-control" ngModel /></div>
-      </div>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-sm" [disabled]="f.invalid || isRequesting">OK</button>
-    </div>
-  </form>
-  <div *ngIf="errors" class="alert alert-danger" role="alert">{{errors}}</div>
-</p-dialog>
+<app-change-password [(open)]="changingPwd"></app-change-password>

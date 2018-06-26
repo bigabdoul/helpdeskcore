@@ -339,4 +339,10 @@
   <data name="SysEventUserPasswordChanged" xml:space="preserve">
     <value>Mot de passe changé pour l'utilisateur {0}.</value>
   </data>
+  <data name="UserAccountDoesNotExistOrDisabled" xml:space="preserve">
+    <value>Compte d'utilisateur inexistant ou désactivé.</value>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>Réinitialisation de votre mot de passe</value>
+  </data>
 </root>

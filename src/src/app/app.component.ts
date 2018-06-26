@@ -1,11 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Message } from "primeng/api";
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 import { environment } from "@env/environment";
 import { UserService } from "@app/shared/services";
 import { NotificationMessage, MessageType, SysEventType, OnlineUser } from "@app/shared/models";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,14 +16,17 @@ import { NotificationMessage, MessageType, SysEventType, OnlineUser } from "@app
 })
 export class AppComponent implements OnInit, OnDestroy {
   private subs: any;
+  private navSubs: Subscription;
   private connection: HubConnection;
   private hubStarted: boolean;
+
   log: Message[] = [];
   messages: Message[] = [];
   onlineUsers: OnlineUser[] = [];
   changingPwd: boolean;
+  showPasswordReset: boolean;
 
-  constructor(private svc: UserService) {
+  constructor(private svc: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -39,15 +44,24 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!this.hubStarted && this.svc.loggedIn()) {
       this.startConnection();
     }
+
+    // check if a password reset is requested
+    this.navSubs = this.route.queryParamMap
+      .filter(params => +params.get('pwdreset') === 1)
+      .subscribe(params => {
+        const obj = { userName: params.get('username'), resetToken: params.get('token') };
+        localStorage.setItem('passwordReset', JSON.stringify(obj));
+        this.showPasswordReset = true;
+      });
   }
 
   ngOnDestroy() {
     if (this.hubStarted) {
       this.connection.stop();
     }
-    if (this.subs && this.subs.unsubscribe) {
-      this.subs.unsubscribe();
-    }
+
+    this.subs.unsubscribe();
+    this.navSubs.unsubscribe();
   }
 
   private startConnection() {

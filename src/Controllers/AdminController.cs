@@ -58,10 +58,10 @@ namespace HelpDeskCore.Controllers
       var is_builtin = await IsBuiltInAdmin();
       var is_self = emp.UserId == GetUserId();
       var hasPwd = await UserManager.HasPasswordAsync(target);
-      var oldPasswordHash = string.Empty;
+      var OldPasswordHash = string.Empty;
 
       if (hasPwd)
-        oldPasswordHash = target.PasswordHash;
+        OldPasswordHash = target.PasswordHash;
 
       if (!is_self)
       {
@@ -99,9 +99,7 @@ namespace HelpDeskCore.Controllers
         result = await UserManager.AddPasswordAsync(target, model.NewPassword);
 
       if (result.Succeeded)
-      {
         return await change_pwd_success();
-      }
 
       return BadRequest(ModelState.AddError(string.Empty, ChangePasswordBadAttempt));
 
@@ -132,7 +130,7 @@ namespace HelpDeskCore.Controllers
         if (!is_self)
           user = await FindUserAsync();
 
-        await EventLogger.LogAsync(SysEventType.UserPasswordChanged, user, target, new { oldPasswordHash });
+        await EventLogger.LogAsync(SysEventType.UserPasswordChanged, user, target, new { UserId = user.Id, OldPasswordHash });
         return Ok();
       }
     }
@@ -142,14 +140,13 @@ namespace HelpDeskCore.Controllers
     public async Task<IActionResult> Users([FromQuery] PaginationModel model)
     {
       IQueryable<AppUser> query = Db.Users;
+
       if (model.Column.HasValue)
-      {
         query = query.Filter(model.Column.Value);
-      }
+
       if (!string.IsNullOrWhiteSpace(model.Query))
-      {
         query = query.Search(model.Query);
-      }
+
       return await GetUserSnapshotAsync(query, model);
     }
     
@@ -161,7 +158,7 @@ namespace HelpDeskCore.Controllers
       // return detailed data
       return new OkObjectResult(emp.AsDetail());
     }
-
+  
     [HttpPut("userdetail")]
     public async Task<IActionResult> UserDetail([FromBody] UserDetailViewModel model)
     {
@@ -300,7 +297,7 @@ namespace HelpDeskCore.Controllers
       await EventLogger.LogAsync(SysEventType.UserUpdated, await FindUserAsync(), target, oldEmp);
       return Ok();
     }
-
+  
     [HttpPost("import-users"), DisableRequestSizeLimit]
     public async Task<IActionResult> ImportUsers()
     {

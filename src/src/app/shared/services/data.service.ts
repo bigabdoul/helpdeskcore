@@ -138,8 +138,10 @@ export class DataService extends BaseService {
 
   private postGetCore(data: any, action: string = '', isBool = false): Observable<any> {
     const options = new RequestOptions({ headers: this.getHeaders() });
+    const url = this._baseUrl + `/${this._controller}/${action}`;
+    console.log(url);
     action = action || this._action;
-    return this.http.post(this._baseUrl + `/${this._controller}/${action}`, JSON.stringify(data || {}), options)
+    return this.http.post(url, JSON.stringify(data || {}), options)
       .map(res => {
         if (isBool) {
           return true;

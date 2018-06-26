@@ -8,7 +8,9 @@ import { platformBrowserDynamic } from "@angular/platform-browser-dynamic/platfo
 import { AuthenticateXHRBackend } from '@app/authenticate-xhr.backend';
 import { routing } from '@app/app.routing';
 
-import { GrowlModule } from 'primeng/primeng';
+import { GrowlModule, DialogModule } from 'primeng/primeng';
+
+import { AlertService, ConfigService, SharedModule, ChangePasswordComponent } from '@app/shared';
 
 /* App Root */
 import { AppComponent } from '@app/app.component';
@@ -20,7 +22,6 @@ import { DashboardModule } from '@app/dashboard';
 import { AdminModule } from '@app/admin';
 import { TicketsModule } from '@app/tickets';
 import { UserModule } from '@app/user';
-import { AlertService, ConfigService } from '@app/shared';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AlertService, ConfigService } from '@app/shared';
     HomeComponent,
   ],
   imports: [
+    SharedModule,
     AccountModule,
     AdminModule,
     BrowserAnimationsModule,
@@ -39,6 +41,7 @@ import { AlertService, ConfigService } from '@app/shared';
     FormsModule,
     HttpModule,
     GrowlModule,
+    DialogModule,
     routing
   ],
   providers: [
