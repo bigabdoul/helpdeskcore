@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { DetailEditView } from "@app/shared";
-import { TicketService, TicketRegistration, TicketModification } from "@app/tickets";
+import { DetailEditView } from "@app/shared/components";
+import { TicketService } from '@app/tickets/services';
+import { TicketRegistration, TicketModification } from "@app/tickets/models";
 
 @Component({
   selector: 'app-edit-ticket',
