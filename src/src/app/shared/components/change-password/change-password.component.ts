@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChangePasswordModel, DataService } from '@app/shared';
+
+import { DataService } from '@app/shared/services';
+import { ChangePasswordModel } from '@app/shared/models';
 
 /**
  * Provides mechanisms to change or reset a user's password.
