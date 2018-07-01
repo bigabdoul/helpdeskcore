@@ -67,3 +67,22 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $Path $Acl  
 ```
 Of course, the above parameters need to be replaced with those you've actually used.
+
+### Deployment on Linux
+
+There are different versions of Linux that support the [.NET Core 2.0 Runtime (v2.0.8)](https://www.microsoft.com/net/download/dotnet-core/runtime-2.0.8) and installation instructions are available for the most popular distributions of it:
+
+* [RHEL](https://www.microsoft.com/net/download/linux-package-manager/rhel/runtime-2.0.8)
+* [Ubuntu 18.04](https://www.microsoft.com/net/download/linux-package-manager/ubuntu18-04/runtime-2.0.8)
+* [Ubuntu 17.10](https://www.microsoft.com/net/download/linux-package-manager/ubuntu17-10/runtime-2.0.8)
+* [Ubuntu 16.04](https://www.microsoft.com/net/download/linux-package-manager/ubuntu16-04/runtime-2.0.8)
+* [Ubuntu 14.04](https://www.microsoft.com/net/download/linux-package-manager/ubuntu14-04/runtime-2.0.8)
+* [Debian 9](https://www.microsoft.com/net/download/linux-package-manager/debian9/runtime-2.0.8)
+* [Debian 8](https://www.microsoft.com/net/download/linux-package-manager/debian8/runtime-2.0.8)
+* [Fedora 26](https://www.microsoft.com/net/download/linux-package-manager/fedora26/runtime-2.0.8)
+* [Fedora 25](https://www.microsoft.com/net/download/linux-package-manager/fedora25/runtime-2.0.8)
+* [CentOS / Oracle](https://www.microsoft.com/net/download/linux-package-manager/centos/runtime-2.0.8)
+* [openSUSE](https://www.microsoft.com/net/download/linux-package-manager/opensuse/runtime-2.0.8)
+* [SLES](https://www.microsoft.com/net/download/linux-package-manager/sles/runtime-2.0.8)
+
+
