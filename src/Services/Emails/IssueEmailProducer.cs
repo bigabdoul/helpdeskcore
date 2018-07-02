@@ -83,7 +83,7 @@ namespace HelpDeskCore.Services.Emails
       {
         if (issue.User == null && e.EventType != SysEventType.IssueDeleted)
         {
-          issue = await _issueRepo.Query(q => q.QueryIssues(id: issue.Id, withIncludes: true)).SingleOrDefaultAsync();
+          issue = await _issueRepo.All(q => q.QueryIssues(id: issue.Id, withIncludes: true)).SingleOrDefaultAsync();
         }
 
         var fullName = user.FullName();
@@ -138,14 +138,14 @@ namespace HelpDeskCore.Services.Emails
               // notify all admins?
               if (notifs.NotifyAllAdmins ?? false)
               {
-                var qry = _userRepo.Query(q => q.NotDisabled().Admins().Not(user.Id).CanReceiveEmails());
+                var qry = _userRepo.All(q => q.NotDisabled().Admins().Not(user.Id).CanReceiveEmails());
                 await ForUsersAsync(qry, subj, body, from, replyToAddrList, cancellationToken);
               }
 
               // notify techs in their categories?
               if (notifs.NotifyTechs ?? false)
               {
-                var qry = _userRepo.Query(q => q.NotDisabled().Techs().Not(user.Id).CanReceiveEmails());
+                var qry = _userRepo.All(q => q.NotDisabled().Techs().Not(user.Id).CanReceiveEmails());
                 await ForUsersAsync(qry, subj, body, from, replyToAddrList, cancellationToken);
               }
             }
@@ -185,7 +185,7 @@ namespace HelpDeskCore.Services.Emails
                 await NotifyAssignee(temp);
 
                 // send to all subscribers but the submitter
-                var qry = _subsRepo.Query(q => q.QueryIssueSubscribers(issue.Id).But(user.Id));
+                var qry = _subsRepo.All(q => q.QueryIssueSubscribers(issue.Id).But(user.Id));
 
                 if (techsNotified)
                   qry = qry.NotTechs(); // exclude the techs who've been notified previously
@@ -198,7 +198,7 @@ namespace HelpDeskCore.Services.Emails
                 NotifyOwner(temp);
 
                 // send to subscribers except the owner and updater
-                var qry = _subsRepo.Query(q => q.QueryIssueSubscribers(issue.Id).But(user.Id).But(issue.User.Id));
+                var qry = _subsRepo.All(q => q.QueryIssueSubscribers(issue.Id).But(user.Id).But(issue.User.Id));
 
                 await ForSubscribersAsync(qry, temp.Subject, temp.Body, from, replyToAddrList, cancellationToken);
               }
@@ -276,7 +276,7 @@ namespace HelpDeskCore.Services.Emails
 
         async Task NotifyTechs(EmailTemplate et)
         {
-          var qry = _userRepo.Query(q => q.NotDisabled().Techs().Not(user.Id).CanReceiveEmails());
+          var qry = _userRepo.All(q => q.NotDisabled().Techs().Not(user.Id).CanReceiveEmails());
           await ForUsersAsync(qry, et.Subject, et.Body, from, replyToAddrList, cancellationToken);
         }
 
