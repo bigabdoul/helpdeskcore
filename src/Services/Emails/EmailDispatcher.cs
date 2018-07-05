@@ -30,7 +30,6 @@ namespace HelpDeskCore.Services.Emails
   {
     #region static & const
 
-    static EmailDispatcher _instance;
     const int PAGE_SIZE = 20;
     const string EMAIL_FAILED = nameof(SysEventType.EmailSendFailed);
 
@@ -77,9 +76,9 @@ namespace HelpDeskCore.Services.Emails
       , ISysEventLogger sysLogger
       , IHubContext<NotificationHub, INotificationHub> hubContext) : base(logger, options)
     {
-      if (_instance != null) throw new InvalidOperationException($"No more than one instance is allowed for the singleton {nameof(EmailDispatcher)} service.");
+      if (Instance != null) throw new InvalidOperationException($"No more than one instance is allowed for the singleton {nameof(EmailDispatcher)} service.");
 
-      _instance = this;
+      Instance = this;
 
       _emailClient = emailClient;
       _sysRepo = sysEventRepo;
@@ -99,7 +98,7 @@ namespace HelpDeskCore.Services.Emails
     /// <summary>
     /// Gets the default instance of the <see cref="EmailDispatcher"/> class.
     /// </summary>
-    public static EmailDispatcher Instance { get => _instance; }
+    public static EmailDispatcher Instance { get; private set; }
 
     /// <summary>
     /// Gets the current e-mailconfiguration settings.
