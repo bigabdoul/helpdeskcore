@@ -41,21 +41,18 @@ namespace HelpDeskCore.Services.Emails
     /// Initializes a new instance of the <see cref="IssueEmailProducer"/> class using the specified parameters.
     /// </summary>
     /// <param name="logger">An object used to report incidences.</param>
-    /// <param name="isseRepo">The issue repository.</param>
-    /// <param name="userRepo">The application user repository.</param>
-    /// <param name="subsRepo">The subscribers repository.</param>
-    /// <param name="commentRepo">The comment repository.</param>
+    /// <param name="consumer">The consumer used to enqueue produced messages.</param>
+    /// <param name="unitOfWork">The repositories provider.</param>
     /// <param name="templateViewRender">The e-mail template view render service.</param>
-    public IssueEmailProducer(ILogger<IssueEmailProducer> logger, IRepository<Issue> isseRepo
-      , IRepository<AppUser> userRepo
-      , IRepository<IssueSubscriber> subsRepo
-      , IRepository<Comment> commentRepo
-      , IViewRenderService templateViewRender) : base(EmailDispatcher.Instance, logger)
+    public IssueEmailProducer(ILogger<IssueEmailProducer> logger
+      , IMessageConsumer consumer
+      , IUnitOfWork unitOfWork
+      , IViewRenderService templateViewRender) : base(EmailDispatcher.Instance ?? consumer , logger)
     {
-      _issueRepo = isseRepo;
-      _userRepo = userRepo;
-      _subsRepo = subsRepo;
-      _commentRepo = commentRepo;
+      _issueRepo = unitOfWork.Repository<Issue>();
+      _userRepo = unitOfWork.Repository<AppUser>();
+      _subsRepo = unitOfWork.Repository<IssueSubscriber>();
+      _commentRepo = unitOfWork.Repository<Comment>();
       _emailTemplatesViewRender = templateViewRender;
     }
 
@@ -225,7 +222,7 @@ namespace HelpDeskCore.Services.Emails
             // definitely no template for this scenario!
             break;
         }
-
+        
         Consumer.Notify();
 
         async Task<EmailTemplate> TemplateForUpdate(string whatHappened)
