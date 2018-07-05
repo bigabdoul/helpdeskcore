@@ -330,3 +330,4 @@ testem.log
 Thumbs.db
 
 **/.gitignore
+/.vscode
