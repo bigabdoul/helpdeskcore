@@ -20,6 +20,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
   @Input() reset: boolean;
   @Output() passwordChanged = new EventEmitter<boolean>();
   @Output() passwordError = new EventEmitter<string>();
+  @Output() visibleChanged = new EventEmitter<boolean>();
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) {
   }
@@ -37,10 +38,12 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
 
   showDialog() {
     this.open = true;
+    this.visibleChanged.next(true);
   }
 
   closeDialog() {
     this.open = false;
+    this.visibleChanged.next(false);
   }
 
   changePassword({ value, valid }: { value: ChangePasswordModel, valid: boolean }) {

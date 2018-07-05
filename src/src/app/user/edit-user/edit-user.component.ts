@@ -53,8 +53,15 @@ export class EditUserComponent extends DetailEditView<UserDetail> {
     }
   }
 
-  showChangePwd(event) {
-    event.preventDefault();
+  showChangePwd() {
     this.changingPwd = true;
+  }
+
+  pwdDlgChanged(visible: boolean) {
+    console.log('Change Password Dialog visible changed. visible=', visible);
+    console.log('Changing password: ', this.changingPwd);
+    if (!visible) {
+      this.changingPwd = false;
+    }
   }
 }
