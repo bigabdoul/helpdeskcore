@@ -17,6 +17,15 @@
         Critical,
     }
 
+    public enum TicketFilter
+    {
+        All = 1,
+        Unanswered = 2,
+        Unclosed = 3,
+        Unassigned = 4,
+        AssignedToUser = 5,
+    }
+
     public enum IssueSorting
     {
         Id = 1,
