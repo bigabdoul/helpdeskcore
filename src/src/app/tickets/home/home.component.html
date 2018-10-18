@@ -4,6 +4,13 @@
     <a href="#" routerLink="/admin/users"><i class="fa fa-user icon"></i> Utilisateurs</a>
     <a href="#" routerLink="/admin/categories"><i class="fa fa-list icon"></i> Catégories</a>
   </span>
+  <div class="radiobox">
+    <input type="radio" name="filter" (click)="applyFilter(2)" id="filterUnanswered" value="2" [disabled]="isRequesting"><label for="filterUnanswered">Sans réponse</label>
+    <input type="radio" name="filter" (click)="applyFilter(3)" id="filterUnclosed" value="3" [disabled]="isRequesting"><label for="filterUnclosed">Non résolus</label>
+    <input type="radio" name="filter" (click)="applyFilter(4)" id="filterUnassigned" value="4" [disabled]="isRequesting"><label for="filterUnassigned">Non assignés</label>
+    <input type="radio" name="filter" (click)="applyFilter(5)" id="filterAssignedToUser" value="5" [disabled]="isRequesting"><label for="filterAssignedToUser">Assignés à moi</label>
+    <input type="radio" name="filter" (click)="applyFilter(1)" id="filterAll" value="1" checked [disabled]="isRequesting"><label for="filterAll">Tous</label>
+  </div>
 </div>
 <div class="tickets form-group scrollv">
   <table class="table">
