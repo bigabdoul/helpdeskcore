@@ -364,6 +364,40 @@ input[type="checkbox"], input[type="radio"] {
   top: 60px;
 }
 
+/* .radiobox styles */
+
+.radiobox {
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.radiobox input[type=radio] {
+  display: none;
+}
+
+.radiobox input[type="radio"]:checked + label {
+  background-color: #eaeced;
+  color: #000;
+}
+
+.radiobox label:first-of-type {
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.radiobox label {
+  border-left: 1px solid #ccc;
+  margin: 0;
+  display: inline-block;
+  padding: 8px 10px;
+  color: #2980b9;
+  cursor: pointer;
+  line-height: 17px;
+}
+
 @media (max-width: 768px) {
   .page-header {
     margin-top: 10px;
