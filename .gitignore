@@ -331,3 +331,4 @@ Thumbs.db
 
 **/.gitignore
 /.vscode
+/src/package-lock.json
