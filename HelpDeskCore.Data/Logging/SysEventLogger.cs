@@ -26,6 +26,11 @@ namespace HelpDeskCore.Data.Logging
             _eventRepository = eventRepository;
         }
 
+        /// <summary>
+        /// Asynchronously adds an event entry to the log.
+        /// </summary>
+        /// <param name="args">The arguments of the event to log.</param>
+        /// <returns></returns>
         public override async Task LogAsync(SysEventArgs args)
         {
             var type = args.EventType;
