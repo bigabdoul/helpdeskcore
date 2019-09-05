@@ -29,7 +29,7 @@ namespace HelpDeskCore.Shared.Logging
         public event AsyncEventHandler<SysEventArgs> Logged;
 
         /// <summary>
-        /// Asynchronously adds an event entry to the database.
+        /// Asynchronously adds an event entry to the log.
         /// </summary>
         /// <param name="type">The type of event to log.</param>
         /// <param name="user">The user who caused the event. Depending on the event type, this can be an instance of IdentityUser, the user id, or name.</param>
@@ -40,7 +40,7 @@ namespace HelpDeskCore.Shared.Logging
           => await LogAsync(new SysEventArgs(type, user, data, previousObjectState));
 
         /// <summary>
-        /// Asynchronously adds an event entry to the database.
+        /// Asynchronously adds an event entry to the log.
         /// </summary>
         /// <param name="args">The arguments of the event to log.</param>
         /// <returns></returns>
