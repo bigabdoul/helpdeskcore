@@ -1,18 +1,23 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { Message } from "primeng/api";
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr";
 
 import { environment } from "@env/environment";
 import { UserService } from "@app/shared/services";
-import { NotificationMessage, MessageType, SysEventType, OnlineUser } from "@app/shared/models";
-import { Subscription } from 'rxjs';
+import {
+  NotificationMessage,
+  MessageType,
+  SysEventType,
+  OnlineUser
+} from "@app/shared/models";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit, OnDestroy {
   private subs: any;
@@ -26,18 +31,20 @@ export class AppComponent implements OnInit, OnDestroy {
   changingPwd: boolean;
   showPasswordReset: boolean;
 
-  constructor(private svc: UserService, private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(
+    private svc: UserService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-
     this.subs = this.svc.onConnection.subscribe(connected => {
       if (connected) {
         if (!this.hubStarted) {
           this.startConnection();
         }
       } else if (this.hubStarted) {
-        this.connection.stop().then(() => this.hubStarted = false);
+        this.connection.stop().then(() => (this.hubStarted = false));
       }
     });
 
@@ -47,10 +54,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // check if a password reset is requested
     this.navSubs = this.route.queryParamMap
-      .filter(params => +params.get('pwdreset') === 1)
+      .filter(params => +params.get("pwdreset") === 1)
       .subscribe(params => {
-        const obj = { userName: params.get('username'), resetToken: params.get('token') };
-        localStorage.setItem('passwordReset', JSON.stringify(obj));
+        const obj = {
+          userName: params.get("username"),
+          resetToken: params.get("token")
+        };
+        localStorage.setItem("passwordReset", JSON.stringify(obj));
         this.showPasswordReset = true;
       });
   }
@@ -66,17 +76,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private startConnection() {
     const users = this.onlineUsers;
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem("auth_token");
 
     this.connection = new HubConnectionBuilder()
       .withUrl(`${environment.baseUrl}/notify?access_token=${token}`)
       .build();
 
-    this.connection.on('BroadcastMessage', (m: NotificationMessage) => {
-
-      const eventType = m.eventType,
-        userId = m.userId,
-        userName = m.userName;
+    this.connection.on("BroadcastMessage", (m: NotificationMessage) => {
+      const { eventType, userId, userName } = m;
 
       switch (eventType) {
         case SysEventType.loginSuccess:
@@ -101,8 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.spreadMessages(msg);
           this.log.unshift(msg);
         }
-      }
-      else {
+      } else {
         // no specific user, assume message's for everybody
         this.spreadMessages(msg);
         this.log.unshift(msg);
@@ -111,8 +117,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.connection
       .start()
-      .then(() => { this.hubStarted = true; console.log('SignalR connection started!'); })
-      .catch(err => console.error('Error while establishing SignalR connection: ' + err));
+      .then(() => {
+        this.hubStarted = true;
+        console.log("SignalR connection started!");
+      })
+      .catch(err =>
+        console.error("Error while establishing SignalR connection: " + err)
+      );
   }
 
   private spreadMessages(m: Message) {
